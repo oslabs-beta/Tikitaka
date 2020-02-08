@@ -11,14 +11,12 @@ before_install:
   - "curl https://sdk.cloud.google.com | bash > /dev/null;"
   - "source ~/google-cloud-sdk/path.zsh.inc"
   - "gcloud components update kubectl"
-  - "gcloud auth activate-service-account --key-file service_account.json"
-  - "gcloud config set project tikitakaenv"
-  - "gcloud config set compute/zone us-west2-c"
-  - "gcloud container clusters get-credentials tikitakaenv"
+  - "gcloud auth activate-service-account --key-file service-account.json"
+  - "gcloud config set project tikitakastage"
+  - "gcloud config set compute/region us-west2"
+  - "gcloud container clusters get-credentials tikitakastage --region=us-west2"
   - "echo \"$DOCKER_PASSWORD\" | docker login -u \"$DOCKER_USERNAME\" --password-stdin"
-  - "docker build -t armangurkan1/react-test -f ./client/Dockerfile.dev ./client"
-script:
-  - "docker run -e CI=true armangurkan1/react-test npm run test"
+  - "docker build -t tikitaka1/general -f ./client/Dockerfile.dev ./client"
 deploy:
   provider: script
   script: "bash ./deploy.sh"
