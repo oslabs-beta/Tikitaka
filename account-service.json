@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "tikitakastage",
+  "private_key_id": "6e9ea5ba76f5f80bb77fdd442651f76c64bd7eda",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDGQUJhqbHs1Vx8\nMD5qNX69Pb26UiCn/zxQMqxLeiOtT7wFwT5JK2CyMJBi6znfOKWoWVMYqiZ7xJX5\nGXzMpOhtfEth+pDTjbFv6Vwl+lYgEbwPmfCJ0E6HM+kaBqYtaz2+VbRuwt+9lI7P\noJqMhGCxlDA5LaRfART/Wm6W8Pf+OZPaMEtsKEb+zIOKQ+Wbs1N3RuCeSSAUDLAD\nOBP+fFnIXd4GLauFv1KCE9//1/Ek8i/5pneTVBMViiJ8YX/pVWagcnsDOgRe8x0x\nECGmpWzYEB4HCq5/T0iHIltAKWOJ1MZ65YmStchLfm2n/bLUl3E8sjfgt5ebAyMm\n7Nf3KX8NAgMBAAECggEABHrrDhvwmmKD8YaBkpLc51fi1rgOZt18tm8+t4HuFneL\nzzF7v9mMGNrCGIoqR6IXFEPYfeEyd2+M2BE8Yb+ERR0e8vrflPhJvzatz2nl0lm0\nP0ICTor3i1Sf+ueVj8cxoQB80Ff1CGq4A3ckpvJC4SBxKomegksa915Ky3xsjkEi\nm75krO6WkYVyxzqvXeOGNqvpvok4vGARm5KCcbIwk7TNCXFYFele8PC8qm6MdK++\nlundx2+4XklOg7Tun1yxZ4M9PZftvMthGCjVFUpJ3ryLAojrEpWK7RPYYVTXngSw\nbyhZsCnWOkoIodt96btrgXAF4M8ysrjx8ncArKMcXQKBgQD4y9iInf8RCnaJhrFw\nFAULl0PIAMAW2FaCgmRvZIj8ahfYlKk84w94UCDO3zvWjvQSY9fL33v8lRJd6XVe\nAGpjaidSWuPUGCJo97dEFaXkYOzLFhnILT6WKDVjrxa66GbNGEJNNU+Ye9B7ME2N\nLxDKd1mlPlOgDC/55BPBHN64uwKBgQDL/skVB1SvG5JAbBHsh1qZxmhRaE0uS01u\nCmZlIKs8iyabGEH2zU2yCecI+VWZE3OcLM4ITRTLTuoPaxaZITbv0Q+9K4FYbVeN\nEL0Ug3N96rUV6NRF/vznKFe2is/FscxGgXF62ZeOV3/O4MNfsAM9Wm3zzvlmX1nf\njbQS8HRu1wKBgG/dX+fVemkUFkYxvLhTGA2lHsHfrH7ZGNSngjcfsgQkQ8KK3SlW\nQo9rH8VEVChdsFpQcCfnvVzNPivhm3b/otY+VZ3O5h9oFpixwMIpJaTw+6c4sbDy\nvvBO9epzQDob4pUW8kC61qYODahGCKiRX/BZB4Kn6nvM3wlxxnwO2gmfAoGBAJmz\nYAizHFBPotNdWefwWAhTINhtkPGXlUCbH2mEwuB8K9th3Jm7OJYztdriGmea61m5\nvIcupMNGsz5ovn8kMoNg7s3mkK9yuyuzd/OT05oFFOnsIryWkjENCYGld0UKYNKi\nx0D736BFNyxF148qTFaW4w93XByRLWMuHobCm8fDAoGBAKMJL0iaS9/b2IK9dniE\niexpZyEntVADBId9Uo52TxH1OpkNHSCGCpjzGcCVEp3IGfwgHFoYE43JbdhLHbOR\nXBBrSiFAiJDgDRm5LyhcisUwWfdN/gc1S86j4o3Taof960I6Hb//5zoTZUumDGbD\n51HFGbPVkcStQgaNKGyIdFAH\n-----END PRIVATE KEY-----\n",
+  "client_email": "travis@tikitakastage.iam.gserviceaccount.com",
+  "client_id": "112120773130784427339",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/travis%40tikitakastage.iam.gserviceaccount.com"
+}
