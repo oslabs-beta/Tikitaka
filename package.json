@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.js",
+    "build": "webpack --config ./webpack.config.js",
     "start": "node ./server/server.js",
     "dev": "NODE_ENV=development nodemon ./server/server.js & webpack-dev-server --open --hot --inline --progress --colors --watch --content-base ./",
     "docker-dev:hot": "docker-compose -f docker-compose-dev-hot.yml up",
