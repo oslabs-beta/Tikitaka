@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config ./webpack.config.js",
+    "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.js",
     "start": "node ./server/server.js",
-    "dev:hot": "NODE_ENV=development nodemon ./server/server.js & webpack-dev-server --open --hot --inline --progress --colors --watch --content-base ./",
+    "dev": "NODE_ENV=development nodemon ./server/server.js & webpack-dev-server --open --hot --inline --progress --colors --watch --content-base ./",
     "docker-dev:hot": "docker-compose -f docker-compose-dev-hot.yml up",
     "test": "NODE_ENV=test jest --coverage"
   },
