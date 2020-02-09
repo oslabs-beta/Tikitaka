@@ -2,17 +2,27 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 
+
 /**
  * Setting constants
  */
 const app = express();
 const PORT = 3000;
+const testController = require('./controllers/testController');
 
 /**
  * Handling parsing request 
  */
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
+
+/**
+ * Routing
+ */
+app.get('/testing-ab',testController.testingAB, (req,res) => {
+  // res.json(res.locals.data)
+  res.send({message:'hello'})
+});
 
 /**
  * Main app
