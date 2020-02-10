@@ -1,0 +1,18 @@
+apiVersion: skaffold/v1beta2
+kind: Config
+build:
+  local:
+    push: false
+  artifacts:
+    - image: tikitaka1/tikitaka-stage
+      context: .
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        '**/*.js': .
+        '**/*.html': .
+        '**/*.css': .
+deploy:
+  kubectl:
+    manifests:
+      - k8s/tikitaka-app.yaml
