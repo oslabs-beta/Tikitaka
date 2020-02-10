@@ -11,9 +11,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../build/')));
 
+app.get('/testing-setup',testController.setup, (req,res) => {
+  res.json(res.locals.data);
+});
 app.get('/testing-ab',testController.testingAB, (req,res) => {
-  res.json(res.locals.data)
-  // res.send({message:'hello'})
+  res.json(res.locals.data);
 });
 
 /**
