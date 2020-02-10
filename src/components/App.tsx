@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
@@ -83,51 +84,15 @@ export class App extends React.Component<{}, IState>{
     public render(): JSX.Element{
 
         return (
-        <Container className="wrapper">
-            
+        <Container>
             <Row>
-                {/* APP NAVBAR */}
-                <Col sm={3} >
+                <Col xs={12}>
                     <Sidebar />
-                    hello
                 </Col>
-
-                {/* APP MAIN DISPLAY */}
-                <Col sm={9}>
-                    <Container id="main-display">
-                    <Col className="content">
-                        <Bullets width={1400} height={1400} 
-                                margin={{
-                                top: 30,
-                                left: 30,
-                                right: 30,
-                                bottom: 30
-                                }} />
-                    </Col>
-                    </Container>
-                    sup
+                <Col xl={12} className="header">
+                header
                 </Col>
             </Row>
-           
-
-        
-            
-
-            {/* <Row className="justify-content-md-center">
-                <div>
-                    <h1>To Do List</h1>
-                    <form onSubmit={(e)=> this.handleSubmit(e)}>
-                        <input type="text"
-                            className="tdl-input"
-                            placeholder="Add a task"
-                            value={ this.state.currentTask }
-                            onChange={(e) => this.setState({ currentTask: e.target.value})}
-                        />
-                        <button type="submit">Add Task</button>
-                    </form>
-                    <section> { this.renderTasks() } </section>
-                </div>
-            </Row> */}
         </Container>
         
         );

@@ -1,0 +1,95 @@
+
+/* RESETS
+
+============================================ */
+
+html {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+            box-sizing: inherit;
+}
+
+body {
+    margin: 20px 0;
+    padding-left: 232px;
+    line-height: 1;
+    font-family: 'Roboto', sans-serif;
+    color: #202020;
+    background-color: #fbfbfb;
+    font-smooth: always;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+body{
+    padding-top:90px
+}
+
+@media (min-width:768px){
+    body{padding-top:0}
+}
+
+@media (min-width:768px){
+    body{margin-left:232px;
+    }
+}
+
+.navbar.fixed-left{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1030;
+
+}
+
+@media (min-width:768px){
+    .navbar.fixed-left{
+        bottom:0;
+        width:232px;
+        flex-flow:column nowrap;
+        align-items:flex-start;
+    }
+    .navbar.fixed-left .navbar-collapse{
+        flex-grow:0;
+        flex-direction:column;
+        width:100%
+    }
+    .navbar.fixed-left .navbar-collapse .navbar-nav{
+        flex-direction:column;
+        width:100%
+    }.navbar.fixed-left .navbar-collapse .navbar-nav .nav-item{
+        width:100%
+    }.navbar.fixed-left .navbar-collapse .navbar-nav .nav-item .dropdown-menu{
+        top:0
+    }
+}
+
+@media (min-width:768px){
+    .navbar.fixed-left{
+        right:auto;
+    }.navbar.fixed-left .navbar-nav .nav-item .dropdown-toggle:after{
+        border-top:.3em solid transparent;
+        border-left:.3em solid;
+        border-bottom:.3em solid transparent;
+        border-right:none;
+        vertical-align:baseline
+    }
+    .navbar.fixed-left .navbar-nav .nav-item .dropdown-menu{
+        left:100%
+    }
+}
+$navbar-dark-active-color: rgb(255, 0, 55);
+
+.header{
+    border: 1px solid red;
+}
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
