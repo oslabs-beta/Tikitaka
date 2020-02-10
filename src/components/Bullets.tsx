@@ -95,7 +95,7 @@ const data: Data = {
   name:  trimmedDownJson[0].traceId,
   children: nodes
 };
-console.log('data: ', data);
+// console.log('data: ', data);
 
 // interface Data {
 //     [x: string]: any;
