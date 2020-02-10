@@ -4,16 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
     "start": "webpack-dev-server --open & nodemon server/server.js",
     "build": "webpack"
-=======
-    "build": "webpack --config ./webpack.config.js",
-    "start": "node ./server/server.js",
-    "dev": "NODE_ENV=development nodemon ./server/server.js & webpack-dev-server --open --hot --inline --progress --colors --watch --content-base ./",
-    "docker-dev:hot": "docker-compose -f docker-compose-dev-hot.yml up",
-    "test": "NODE_ENV=test jest --coverage"
->>>>>>> 70dae9fe516e0532733411efb391693f36add3cd
   },
   "nodemonConfig": {
     "ignore": [
