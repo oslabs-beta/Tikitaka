@@ -39,7 +39,6 @@ export default class TestForm extends React.Component<Iprops, any>{
                             </Col>
                         </Form.Group>
                     </Form.Group>
-                        
 
                     <Form.Group as={Col} controlId="formGridState">
                         <Form.Label><h4>Target B</h4></Form.Label>
@@ -71,9 +70,11 @@ export default class TestForm extends React.Component<Iprops, any>{
                     </Form.Group>
 
                 </Form.Row>
-
-                <Button variant="primary" type="submit">
-                    Submit
+                <Button variant="primary" type="submit" id="createTestBtn">
+                    Create A/B Test
+                </Button>
+                <Button variant="primary">
+                    Open Kiali
                 </Button>
             </Form>
         )

@@ -23,7 +23,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-
 body{
     padding-top:90px
 }
@@ -43,7 +42,13 @@ body{
     left:0;
     right:0;
     z-index:1030;
+}
 
+a{
+    color: rgba(255, 255, 255, 0.5) !important;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    padding: 0.5rem 1rem !important;
 }
 
 @media (min-width:768px){
@@ -86,14 +91,19 @@ $navbar-dark-active-color: rgb(255, 0, 55);
 
 .header{
     border: 1px solid red;
-    background-color: greenyellow;
+    background-color: white;
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.createTestBtn {
+    margin-right: 10px !important;
 }
 .carousel {
     width:500px;
     height:500px;
     margin: auto;
   }
-  
 @import "../../node_modules/bootstrap/scss/bootstrap";
 @import "../../node_modules/bootstrap/scss/functions";
 @import "../../node_modules/bootstrap/scss/variables";

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Carousel from 'react-bootstrap/Carousel'
 
-
 interface Iprops{
 
 }

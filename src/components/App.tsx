@@ -1,16 +1,14 @@
 import * as React from 'react';
-
-import Form from 'react-bootstrap/Form'
-import FormControl from 'react-bootstrap/FormControl'
-import Button from 'react-bootstrap/Button'
-import {Container,Row,Col} from 'react-bootstrap';
+import {Container, Row, Col} from 'react-bootstrap';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Bullets from './Bullets';
 import Sidebar from './Sidebar';
 import TestForm from './TestForm';
+import About from './About';
 import TestDisplay from './TestDisplay';
 
-
-  
 //===================================================================================================//
 //                                          INTERFACE                                                //
 //===================================================================================================//
@@ -92,16 +90,48 @@ export class App extends React.Component<{}, IState>{
                     <Sidebar />
                 </Col>
                 <Col xl={12} className="header">
-                    <h1>This is Header</h1>
+                    <h1>Welcome to Tikitaka</h1>
                 </Col>
                 <Col xl={12} className="content">
-                    <TestForm />
-                    <TestDisplay />
+                    <Router>
+                    <div>
+                        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="fixed-left" fixed="top">
+                            <Navbar.Brand>TIKITAKA</Navbar.Brand>
+                            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                            <Navbar.Collapse id="responsive-navbar-nav">
+                                <Nav className="mr-auto">
+                                    <Link to="/abTest">A/B Test</Link>
+                                    <Link to="/bullets">Distributed Tracing</Link>
+                                    <Link to="/history">Request History</Link>
+                                    <Link to="/about">About</Link>
+                                </Nav>
+                            </Navbar.Collapse>
+                        </Navbar>
+
+                        <Switch>
+                            <Route path="/abTest">
+                                <TestForm />
+                            </Route>
+                            <Route path="/bullets">
+                            <Bullets width={800} height={800} margin={{
+                                top: 30,
+                                left: 30,
+                                right: 30,
+                                bottom: 30
+                            }} />
+                            </Route>
+                            <Route path="/history">
+                                <TestDisplay />
+                            </Route>
+                            <Route path="/about">
+                                <About />
+                            </Route>
+                        </Switch>
+                    </div>
+                    </Router>
                 </Col>
-                {/* <Col xl={12}></Col> */}
             </Row>
         </Container>
-        
         );
     }
 
