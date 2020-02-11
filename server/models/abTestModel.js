@@ -15,7 +15,14 @@ const abTestSchema = new Schema({
     of: String
   },
   archived: Boolean,
-  active: {type: Boolean, required: true, default: true}
+  active: {type: Boolean, required: true, default: true},
+  relatedCustomResourceDefinitions: {
+    type: Map,
+    //todo: check this if you have to relate to any other Schema
+    of: [String]
+  },
+  relatedServices: [String],
+  relatedGateways: [String]
   
   
 });
