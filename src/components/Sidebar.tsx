@@ -2,7 +2,7 @@ import * as React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
 
-  
+
 export default class Sidebar extends React.Component<any, any>{
     public render(): JSX.Element{
         return(
@@ -17,7 +17,7 @@ export default class Sidebar extends React.Component<any, any>{
 
 
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
-                <Navbar.Brand href="#home">TIKITAKA</Navbar.Brand>
+                <Navbar.Brand href="#home">Tiksitaksi</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto"  >
