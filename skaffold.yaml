@@ -5,7 +5,7 @@ build:
     push: false
   artifacts:
     - image: tikitaka1/tikitaka-stage
-      context: .
+      context: ../tikitakaStage
       docker:
         dockerfile: Dockerfile
       sync:
