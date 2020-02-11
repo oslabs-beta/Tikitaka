@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button'
 import {Container,Row,Col} from 'react-bootstrap';
 import Bullets from './Bullets';
 import Sidebar from './Sidebar';
+import TestForm from './TestForm';
 
 
   
@@ -84,13 +85,16 @@ export class App extends React.Component<{}, IState>{
     public render(): JSX.Element{
 
         return (
-        <Container>
+        <Container fluid>
             <Row>
-                <Col xs={12}>
+                <Col>
                     <Sidebar />
                 </Col>
                 <Col xl={12} className="header">
-                header
+                    <h1>This is Header</h1>
+                </Col>
+                <Col xl={12} className="content">
+                    <TestForm />
                 </Col>
             </Row>
         </Container>
