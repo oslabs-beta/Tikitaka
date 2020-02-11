@@ -3,8 +3,6 @@ const request = require('request');
 
 const testController = {};
 
-
-
 /**
  * Sending cluster pods information
  */
