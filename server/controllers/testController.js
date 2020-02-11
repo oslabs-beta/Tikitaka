@@ -3,14 +3,15 @@ const request = require('request');
 
 const testController = {};
 
-// Conecting to K8s API
-const kc = new k8s.KubeConfig();
-kc.loadFromCluster();
+
 
 /**
  * Sending cluster pods information
  */
 testController.setup = (req, res, next) => {
+  // Conecting to K8s API
+  const kc = new k8s.KubeConfig();
+  kc.loadFromCluster();
   let opts = {};
   kc.applyToRequest(opts);
 
@@ -42,6 +43,9 @@ testController.setup = (req, res, next) => {
  * testingAB - 
  */
 testController.testingAB = (req, res, next) => {
+  // Conecting to K8s API
+  const kc = new k8s.KubeConfig();
+  kc.loadFromCluster();
   let opts = {};
   kc.applyToRequest(opts);
 
