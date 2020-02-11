@@ -44,7 +44,17 @@ body{
     left:0;
     right:0;
     z-index:1030;
+}
 
+a{
+    color: rgba(255, 255, 255, 0.5) !important;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    padding: 0.5rem 1rem !important;
+}
+
+.profile-links a{
+    color: black !important;
 }
 
 @media (min-width:768px){
@@ -87,7 +97,13 @@ $navbar-dark-active-color: rgb(255, 0, 55);
 
 .header{
     border: 1px solid red;
-    background-color: greenyellow;
+    background-color: white;
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.createTestBtn {
+    margin-right: 10px !important;
 }
 
 @import "../../node_modules/bootstrap/scss/bootstrap";

@@ -71,9 +71,11 @@ export default class TestForm extends React.Component<Iprops, any>{
                     </Form.Group>
 
                 </Form.Row>
-
-                <Button variant="primary" type="submit">
-                    Submit
+                <Button variant="primary" type="submit" id="createTestBtn">
+                    Create A/B Test
+                </Button>
+                <Button variant="primary">
+                    Open Kiali
                 </Button>
             </Form>
         )
