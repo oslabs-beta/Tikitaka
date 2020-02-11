@@ -51,6 +51,31 @@ a{
     padding: 0.5rem 1rem !important;
 }
 
+.flex-container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.thumbnail img{
+    overflow: hidden;
+    width: 180px;
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.caption .githubIcon{
+    padding-top: 0.45px;
+    width: 60px;
+}
+
+.caption .linkedinIcon{
+    width: 46px;
+}
+
 @media (min-width:768px){
     .navbar.fixed-left{
         bottom:0;
