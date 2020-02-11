@@ -3,16 +3,15 @@ const request = require('request');
 
 const testController = {};
 
-const body = 
+// Conecting to K8s API
+const kc = new k8s.KubeConfig();
+kc.loadFromCluster();
 
 /**
  * Sending cluster pods information
  */
 testController.setup = (req, res, next) => {
-  // Conecting to K8s API
-  const kc = new k8s.KubeConfig();
-  kc.loadFromCluster();
-  const opts = {};
+  let opts = {};
   kc.applyToRequest(opts);
 
   // Request to K8s API
@@ -35,20 +34,18 @@ testController.setup = (req, res, next) => {
         if (!(element.metadata.name.includes('tikitaka')))
           podsNames.push(element.metadata.name);
       });
-      re 
       next();
   });
-
 };
 
 /**
  * testingAB - 
  */
 testController.testingAB = (req, res, next) => {
-  const kc = new k8s.KubeConfig();
-  kc.loadFromCluster();
-  const opts = {};
+  let opts = {};
   kc.applyToRequest(opts);
+
+  // Request to K8s API
   request.get(`${kc.getCurrentCluster().server}/api/v1/namespaces/default/pods`, opts,
     (error, response, body) => {
       if (error) {
