@@ -16,7 +16,7 @@ before_install:
   - "gcloud config set compute/region us-west2"
   - "gcloud container clusters get-credentials tikitakastage --region=us-west2"
   - "echo \"$DOCKER_PASSWORD\" | docker login -u \"$DOCKER_USERNAME\" --password-stdin"
-  - "docker build -t tikitaka1/general -f ./client/Dockerfile.dev ./client"
+  - "docker build -t tikitaka1/general -f ./Dockerfile ./"
 deploy:
   provider: script
   script: "bash ./deploy.sh"
