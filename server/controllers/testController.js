@@ -25,7 +25,7 @@ testController.testingAB = (req, res, next) => {
       }
       res.locals.data = 'DATA ' + body;
       console.log(`body: ${body}`);
-      next();
+      return next();
   });
   // k8sApi.listNamespacedPod('default')
   //   .then((res) => {
