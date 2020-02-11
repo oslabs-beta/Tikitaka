@@ -86,6 +86,10 @@ relationships.forEach(relationship => {
   }
 });
 // console.log('nodes: ', nodes);
+
+relationships.map(relationship => relationship.childIndex).sort((a, b) => a - b).reverse().forEach(childIndex => nodes.splice(childIndex, 1));
+// console.log('after deleting duplicate nodes: ', nodes);
+
 interface Data {
   [x: string]: any;
   name: string;
@@ -96,13 +100,6 @@ const data: Data = {
   children: nodes
 };
 // console.log('data: ', data);
-
-// interface Data {
-//     [x: string]: any;
-//     name: string;
-//     children?: Data[];
-// }
-
 
 //   const data:Data = {
 //     name:  'HOST',
