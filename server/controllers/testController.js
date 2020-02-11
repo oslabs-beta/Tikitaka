@@ -28,7 +28,7 @@ testController.setup = (req, res, next) => {
       let data = JSON.parse(body.replace(regex, "'"));
 
       // Obtaining pods names ignoring our own pod
-      let podsNames = []
+      let podsNames = [];
       data.items.forEach(element => {
         if (!(element.metadata.name.includes('tikitaka')))
           podsNames.push(element.metadata.name);
