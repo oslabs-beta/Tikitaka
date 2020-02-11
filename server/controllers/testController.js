@@ -89,7 +89,7 @@ testController.testingAB = (req, res, next) => {
       if (response) {
         console.log(`statusCode: ${response.statusCode}`);
       }
-      res.locals.data = 'DATA ' + body;
+      res.locals.data = body;
       console.log(`body: ${body}`);
       next();
   });
