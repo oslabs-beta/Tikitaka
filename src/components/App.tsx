@@ -7,7 +7,8 @@ import Bullets from './Bullets';
 import Sidebar from './Sidebar';
 import TestForm from './TestForm';
 import About from './About';
-  
+import TestDisplay from './TestDisplay';
+
 //===================================================================================================//
 //                                          INTERFACE                                                //
 //===================================================================================================//
@@ -108,12 +109,6 @@ export class App extends React.Component<{}, IState>{
                         </Navbar>
 
                         <Switch>
-                            {/* <Redirect exact from="/" to="/abTest">
-                                <TestForm />
-                            </Redirect> */}
-                            {/* <Route path="/">
-                                <TestForm />
-                            </Route> */}
                             <Route path="/abTest">
                                 <TestForm />
                             </Route>
@@ -126,7 +121,7 @@ export class App extends React.Component<{}, IState>{
                             }} />
                             </Route>
                             <Route path="/history">
-                                <About />
+                                <TestDisplay />
                             </Route>
                             <Route path="/about">
                                 <About />

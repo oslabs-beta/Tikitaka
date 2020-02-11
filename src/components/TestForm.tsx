@@ -39,7 +39,6 @@ export default class TestForm extends React.Component<Iprops, any>{
                             </Col>
                         </Form.Group>
                     </Form.Group>
-                        
 
                     <Form.Group as={Col} controlId="formGridState">
                         <Form.Label><h4>Target B</h4></Form.Label>

@@ -24,7 +24,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-
 body{
     padding-top:90px
 }
@@ -51,10 +50,6 @@ a{
     padding-right: 0.5rem;
     padding-left: 0.5rem;
     padding: 0.5rem 1rem !important;
-}
-
-.profile-links a{
-    color: black !important;
 }
 
 @media (min-width:768px){
@@ -105,6 +100,11 @@ $navbar-dark-active-color: rgb(255, 0, 55);
 .createTestBtn {
     margin-right: 10px !important;
 }
+.carousel {
+    width:500px;
+    height:500px;
+    margin: auto;
+  }
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
 @import "../../node_modules/bootstrap/scss/functions";
