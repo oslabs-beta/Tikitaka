@@ -52,6 +52,10 @@ a{
     padding: 0.5rem 1rem !important;
 }
 
+.thumbnail img{
+    width: 100%;
+}
+
 @media (min-width:768px){
     .navbar.fixed-left{
         bottom:0;
