@@ -32,7 +32,8 @@ testController.setup = (req, res, next) => {
       // Obtaining pods names
       let podsNames = []
       data.items.forEach(element => {
-        podsNames.push(element.metadata.name);
+        if (!(element.metadata.name.includes('tikitaka')))
+          podsNames.push(element.metadata.name);
       });
       res.locals.data = podsNames;
       next();
