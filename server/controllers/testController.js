@@ -45,11 +45,42 @@ testController.testingAB = (req, res, next) => {
   // Conecting to K8s API
   const kc = new k8s.KubeConfig();
   kc.loadFromCluster();
-  let opts = {};
+  let opts = {
+    kind: 'VirtualService',
+    apiVersion: 'networking.istio.io/v1alpha3',
+    metadata: {
+      name: 'bookinfo',
+      namespace: 'default'
+    },
+    spec: {
+      hosts: [
+        '*'
+      ],
+      http: [{
+        route: [
+          {
+            destination: {
+              host: '*',
+              subset: 'safe'
+            },
+            weight: '0'
+          },
+          {
+            destination: {
+              host: '*',
+              subset: 'safe'
+            },
+            weight: '100'
+          }
+        ]
+      }]
+    }
+  }
+  opts = JSON.stringify(opts);
   kc.applyToRequest(opts);
 
   // Request to K8s API
-  request.get(`${kc.getCurrentCluster().server}/api/v1/namespaces/default/pods`, opts,
+  request.post(`${kc.getCurrentCluster().server}/apis/networking.istio.io/v1alpha3/namespaces/default/virtualservices/bookinfo`, opts,
     (error, response, body) => {
       if (error) {
         res.locals.data = 'Error ' + error;
