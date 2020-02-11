@@ -46,12 +46,15 @@ testController.testingAB = (req, res, next) => {
         kind: 'VirtualService',
         apiVersion: 'networking.istio.io/v1alpha3',
         metadata: {
-          name: 'bookinf-test',
+          name: 'bookinfo',
           namespace: 'default'
         },
         spec: {
+          gateways:[
+            'bookinfo-gateway',
+          ],
           hosts: [
-            '*'
+            'holllaaa'
           ],
           http: [{
             route: [
@@ -75,7 +78,7 @@ testController.testingAB = (req, res, next) => {
       }
       // opts = JSON.stringify(opts);
 
-      const create = await client.apis['networking.istio.io'].v1alpha3.namespaces('default').virtualservices.post({body:opts})
+      const create = await client.apis['networking.istio.io'].v1alpha3.namespaces('default').virtualservices.bookinfo.post({body:opts})
       res.locals.data = create.body;
       console.log('Create:', create);
     } catch (err) {
