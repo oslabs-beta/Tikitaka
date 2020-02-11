@@ -33,6 +33,7 @@ testController.setup = (req, res, next) => {
         if (!(element.metadata.name.includes('tikitaka')))
           podsNames.push(element.metadata.name);
       });
+      res.locals.data = podsNames;
       next();
   });
 };
