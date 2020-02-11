@@ -89,7 +89,11 @@ $navbar-dark-active-color: rgb(255, 0, 55);
     border: 1px solid red;
     background-color: greenyellow;
 }
-
+.carousel {
+    width:500px;
+    height:500px;
+    margin: auto;
+  }
 @import "../../node_modules/bootstrap/scss/bootstrap";
 @import "../../node_modules/bootstrap/scss/functions";
 @import "../../node_modules/bootstrap/scss/variables";

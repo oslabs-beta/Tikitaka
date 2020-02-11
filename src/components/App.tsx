@@ -7,6 +7,7 @@ import {Container,Row,Col} from 'react-bootstrap';
 import Bullets from './Bullets';
 import Sidebar from './Sidebar';
 import TestForm from './TestForm';
+import TestDisplay from './TestDisplay';
 
 
   
@@ -95,7 +96,9 @@ export class App extends React.Component<{}, IState>{
                 </Col>
                 <Col xl={12} className="content">
                     <TestForm />
+                    <TestDisplay />
                 </Col>
+                {/* <Col xl={12}></Col> */}
             </Row>
         </Container>
         
