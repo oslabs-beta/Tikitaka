@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: tikitaka
-          image: patys1/tikitaka-prod
+          image: greenteaclassic/tikitaka-prod
           ports:
             - containerPort: 3000
           imagePullPolicy: Always
