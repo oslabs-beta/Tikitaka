@@ -9,6 +9,7 @@ import TestForm from './TestForm';
 import About from './About';
 import TestDisplay from './TestDisplay';
 
+
 //===================================================================================================//
 //                                          INTERFACE                                                //
 //===================================================================================================//
@@ -89,8 +90,12 @@ export class App extends React.Component<{}, IState>{
                 <Col>
                     <Sidebar />
                 </Col>
-                <Col xl={12} className="header">
-                    <h1>Welcome to Tikitaka</h1>
+                <Col >
+                <Navbar expand="lg" variant="dark" bg="dark"  fixed="top" className="header">
+                    <Container>
+                        <Navbar.Brand href="/">Welcome</Navbar.Brand>
+                    </Container>
+                </Navbar>
                 </Col>
                 <Col xl={12} className="content">
                     <Router>
@@ -113,7 +118,7 @@ export class App extends React.Component<{}, IState>{
                                 <TestForm />
                             </Route>
                             <Route path="/bullets">
-                            <Bullets width={800} height={800} margin={{
+                            <Bullets width={900} height={800} margin={{
                                 top: 30,
                                 left: 30,
                                 right: 30,
