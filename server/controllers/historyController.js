@@ -1,9 +1,9 @@
-const { History } = require('../models/historyModels');
+// const { History } = require('../models/historyModels');
 
-const historyController = {};
+// const historyController = {};
 
-historyController.getHistory((req, res, next) => {
-  return next();
-});
+// historyController.getHistory((req, res, next) => {
+//   return next();
+// });
 
-module.exports = historyController;
+// module.exports = historyController;

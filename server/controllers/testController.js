@@ -43,8 +43,8 @@ testController.testingAB = (req, res, next) => {
       await client.loadSpec()
 
       let opts = {
-        kind: 'VirtualService',
         apiVersion: 'networking.istio.io/v1alpha3',
+        kind: 'VirtualService', 
         metadata: {
           name: 'bookinfotest',
           namespace: 'default'
@@ -62,25 +62,24 @@ testController.testingAB = (req, res, next) => {
                 destination: {
                   host: '*',
                   subset: 'safe'
-                },
-                weight: '0'
-              },
-              {
-                destination: {
-                  host: '*',
-                  subset: 'safe'
-                },
-                weight: '100'
+                }
               }
             ]
           }]
         }
       }
       // opts = JSON.stringify(opts);
+<<<<<<< HEAD
 
+=======
+      try{
+>>>>>>> f5b62ce0291c4b238b0955003153ce0af08325c6
       const create = await client.apis['networking.istio.io'].v1alpha3.namespaces('default').virtualservices.post({body:opts})
       res.locals.data = create.body;
       console.log('Create:', create);
+      }catch (err){
+        res.locals.data = err;
+      }
     } catch (err) {
       if (err.code !== 409) throw err  
     }

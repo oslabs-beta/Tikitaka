@@ -9,6 +9,8 @@ interface Iprops{
 }
 
 export default class TestForm extends React.Component<Iprops, any>{
+    const deployments = ['deployment1Name', 'deployment2Name', 'deployment3Name', 'deployment4Name'];
+
     public render(): JSX.Element{
         return(
             <Form>
