@@ -2,6 +2,18 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const testController = require('./controllers/testController');
+const mongoose = require('mongoose');
+const { History } = require('./models/historyModels');
+const db = require('./config/keys').MONGO_URI;
+
+mongoose
+  .connect(db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    dbName: 'tikitaka'
+  })
+  .then(() => console.log('Connected to mongoDB'))
+  .catch(err => console.log(err));
 
 const app = express();
 
@@ -16,6 +28,27 @@ app.get('/getDeploys',testController.setup, (req,res) => {
 });
 app.get('/testing-ab',testController.testingAB, (req,res) => {
   res.json(res.locals.data);
+});
+
+app.get('/history', (req, res) => {
+  History.find({})
+    .exec()
+    .then(docs => {
+      res.status(200).json(docs)
+    });
+});
+
+app.post('/history', (req, res) => {
+  console.log(req.body);
+  // History.create({
+  //   podAName: 'cat',
+  //   podAWeight: 33,
+  //   podAContent: '',
+  //   podBName: 'dog',
+  //   podBWeight: 67,
+  //   podBContent: '',
+  //   createdAt: Date.now()
+  // });
 });
 
 /**
