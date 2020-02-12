@@ -1,111 +1,187 @@
-const k8s = require('@kubernetes/client-node');
-const request = require('request');
+const Client = require('kubernetes-client').Client;
+const Request = require('kubernetes-client/backends/request');
 
 const testController = {};
 
 /**
- * testingAB -
+ * Sending cluster pods information
+ */
+testController.setup = (req, res, next) => {
+  async function main () {
+    try {
+      const backend = new Request(Request.config.getInCluster())
+      const client = new Client({ backend })
+      await client.loadSpec()
+  
+      //
+      // Fetch the Deployment from cluste
+      //
+      const deployment = await client.apis.apps.v1.namespaces('default').deployments().get();
+      const data = [];
+      deployment.body.items.forEach((item) => {
+        data.push(item.metadata);
+        console.log(item.metadata);
+      });
+      res.locals.data = data;
+    } catch (err) {
+      res.locals.data = err;
+      console.error('Error: ', err)
+    }
+    next();
+  }
+  main();
+}
+
+/**
+ * testingAB - 
  */
 testController.testingAB = (req, res, next) => {
-  const kc = new k8s.KubeConfig();
-  kc.loadFromCluster();
-  
-  // const k8sApi = kc.makeApiClient(k8s.CoreV1Api);
-  const opts = {};
-  const virtualServiceOpts = {
-    "apiVersion": "networking.istio.io/v1alpha3",
-    "kind": "VirtualService",
-    "metadata": {
-      "annotations": {},
-      "name": "pati-cluster-ip-service",
-      "namespace": "default"
-    },
-    "spec": {
-      "gateways": [
-        "ingress-gateway-configuration"
-      ],
-      "hosts": [
-        "*"
-      ],
-      "http": [
-        {
-          "match": [
-            {
-              "uri": {
-                "prefix": "/topitop"
-              }
-            }
-          ],
-          "route": [
-            {
-              "destination": {
-                "host": "arman-cluster-ip-service"
-              }
-            }
-          ]
+  async function applyDeploy () {
+    try {
+      const backend = new Request(Request.config.getInCluster())
+      const client = new Client({ backend })
+      await client.loadSpec()
+
+      let opts = {
+        apiVersion: 'networking.istio.io/v1alpha3',
+        kind: 'VirtualService', 
+        metadata: {
+          name: 'bookinfotest',
+          namespace: 'default'
         },
-        {
-          "match": [
-            {
-              "uri": {
-                "prefix": "/taksi"
-              }
-            }
+        spec: {
+          gateways:[
+            'bookinfo-gateway',
           ],
-          "route": [
-            {
-              "destination": {
-                "host": "client-cluster-ip-service",
-                "subset": "original"
-              },
-              "weight": 90
-            },
-            {
-              "destination": {
-                "host": "client-cluster-ip-service",
-                "subset": "experimental"
-              },
-              "weight": 10
-            }
-          ]
+          hosts: [
+            'holllaaa'
+          ],
+          http: [{
+            route: [
+              {
+                destination: {
+                  host: '*',
+                  subset: 'safe'
+                }
+              }
+            ]
+          }]
         }
-      ]
-    }
-  };
-  kc.applyToRequest(opts);
-  
-  request.get(`${kc.getCurrentCluster().server}/api/v1/namespaces/default/pods`, opts,
-    (error, response, body) => {
-      if (error) {
-        res.locals.data = 'Error ' + error;
-        console.log(`error: ${error}`);
       }
-      if (response) {
-        console.log(`statusCode: ${response.statusCode}`);
+      // opts = JSON.stringify(opts);
+      try{
+      const create = await client.apis['networking.istio.io'].v1alpha3.namespaces('default').virtualservices.post({body:opts})
+      res.locals.data = create.body;
+      console.log('Create:', create);
+      }catch (err){
+        res.locals.data = err;
       }
-      res.locals.data = 'DATA ' + body;
-      console.log(`body: ${body}`);
-      next();
-  });
-  // k8sApi.listNamespacedPod('default')
-  //   .then((res) => {
-	//     res.locals.data = 'DATA ' + res.body;
-  //   })
-  //   .catch((err) => {
-  //     res.locals.data = 'Error ' + err;
-  //   });
-  request.post(`${kc.getCurrentCluster().server}/apis/networking.istio.io/v1alpha3/namespaces/default/virtualservices/`, virtualServiceOpts, (error, response, body) => {
-    if (error) {
-      res.locals.data =  'Error ' + error;
-      console.log(`error: ${error}`);
+    } catch (err) {
+      if (err.code !== 409) throw err  
     }
-    if (response) {
-      console.log(`statusCode: ${responese.statusCode}`);
-    }
-    res.locals.data = 'DATA ' + body;
-    console.log(`body: ${body}`);
     next();
-  })
-};
+  }  
+  applyDeploy()
+}
 
 module.exports = testController;
+
+// const k8s = require('@kubernetes/client-node');
+// const request = require('request');
+
+// const testController = {};
+
+// /**
+//  * Sending cluster pods information
+//  */
+// testController.setup = (req, res, next) => {
+//   // Conecting to K8s API
+//   const kc = new k8s.KubeConfig();
+//   kc.loadFromCluster();
+//   let opts = {};
+//   kc.applyToRequest(opts);
+
+//   // Request to K8s API
+//   request.get(`${kc.getCurrentCluster().server}/apis/apps/v1/namespaces/default/deployments/`, opts,
+//     (error, response, body) => {
+//       if (error) {
+//         res.locals.data = 'Error ' + error;
+//         console.log(`error: ${error}`);
+//       }
+//       if (response) {
+//         console.log(`statusCode: ${response.statusCode}`);
+//       }
+//       // Parsing response body 
+//       const regex = /\\"/g;
+//       let data = JSON.parse(body.replace(regex, "'"));
+
+//       // // Obtaining pods names ignoring our own pod
+//       // let podsNames = [];
+//       // data.items.forEach(element => {
+//       //   if (!(element.metadata.name.includes('tikitaka')))
+//       //     podsNames.push(element.metadata.name);
+//       // });
+//       res.locals.data = data;
+//       next();
+//   });
+// };
+
+// /**
+//  * testingAB - 
+//  */
+// testController.testingAB = (req, res, next) => {
+//   // Conecting to K8s API
+//   const kc = new k8s.KubeConfig();
+//   kc.loadFromCluster();
+//   let opts = {
+//     kind: 'VirtualService',
+//     apiVersion: 'networking.istio.io/v1alpha3',
+//     metadata: {
+//       name: 'bookinf-test',
+//       namespace: 'default'
+//     },
+//     spec: {
+//       hosts: [
+//         '*'
+//       ],
+//       http: [{
+//         route: [
+//           {
+//             destination: {
+//               host: '*',
+//               subset: 'safe'
+//             },
+//             weight: '0'
+//           },
+//           {
+//             destination: {
+//               host: '*',
+//               subset: 'safe'
+//             },
+//             weight: '100'
+//           }
+//         ]
+//       }]
+//     }
+//   }
+//   opts = JSON.stringify(opts);
+//   kc.applyToRequest(opts);
+
+//   // Request to K8s API
+//   request.post(`${kc.getCurrentCluster().server}/apis/networking.istio.io/v1alpha3/namespaces/default/virtualservices/bookinfo`, opts,
+//     (error, response, body) => {
+//       if (error) {
+//         res.locals.data = 'Error ' + error;
+//         console.log(`error: ${error}`);
+//       }
+//       if (response) {
+//         console.log(`statusCode: ${response.statusCode}`);
+//       }
+//       res.locals.data = body;
+//       console.log(`body: ${body}`);
+//       next();
+//   });
+
+// };
+
+//  module.exports = testController;
