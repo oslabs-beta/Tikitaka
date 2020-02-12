@@ -10,6 +10,27 @@ interface Iprops{
 
 export default class TestForm extends React.Component<Iprops, any>{
     public render(): JSX.Element{
+
+        const u:string = 'http://localhost:8081/apis/apps/v1/namespaces/default/deployments/';
+       
+        function api<T>(url: string): Promise<any> {
+        return fetch(url, {
+            redirect: 'follow'})
+            .then(response => {
+            if (!response.ok) {
+                throw new Error(response.statusText)
+            }
+            return response.json()
+            })
+        }
+        let data: any = api(u);
+        console.log(data);ç
+        // data.items.forEach((item: any) => {
+        //     data.push(item.metadata);
+        //     console.log(item.metadata);
+        //   });
+
+        // let deployments[]
         return(
             <Form>
                 <Form.Row>

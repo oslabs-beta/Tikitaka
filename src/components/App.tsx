@@ -82,7 +82,6 @@ export class App extends React.Component<{}, IState>{
 //                                            RENDER                                                 //
 //===================================================================================================//
     public render(): JSX.Element{
-
         return (
         <Container fluid>
             <Row>
