@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3e18c754-5a80-463e-8a5a-cd69604aa84c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/server/config/keys.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/controllers/historyController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/models/historyModels.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/IMG_9802.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/github-resume.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/About.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/TestDisplay.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/TestForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/testController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/testController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Bullets.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Bullets.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/style.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" show_ignored="true" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/armangurkan/Istio-AB-testing.git" />
+        <option value="https://github.com/oslabs-beta/Istio-AB-testing.git" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1XSO0EyWbCItrUbZxLjWk9r12of" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="MarkdownNavigator.Settings.Preview" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/k8s" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3e18c754-5a80-463e-8a5a-cd69604aa84c" name="Default Changelist" comment="" />
+      <created>1581361960767</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581361960767</updated>
+      <workItem from="1581361962420" duration="52744000" />
+      <workItem from="1581526532155" duration="8976000" />
+    </task>
+    <task id="LOCAL-00001" summary="The Dockerfile is corrected">
+      <created>1581364681837</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1581364681837</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="The Dockerfile is corrected" />
+    <option name="LAST_COMMIT_MESSAGE" value="The Dockerfile is corrected" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="481" y="0" key="CommitChangelistDialog2" timestamp="1581364681779">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="481" y="0" key="CommitChangelistDialog2/0.0.1920.1080/1920.500.1680.1050@0.0.1920.1080" timestamp="1581364681779" />
+    <state width="2505" height="379" key="GridCell.Tab.0.bottom" timestamp="1581539393809">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1868" height="261" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.500.1680.1050@0.0.1920.1080" timestamp="1581364495085" />
+    <state width="2505" height="379" key="GridCell.Tab.0.bottom/0.0.2560.1440@0.0.2560.1440" timestamp="1581539393809" />
+    <state width="1868" height="261" key="GridCell.Tab.0.bottom/0.23.1920.1057@0.23.1920.1057" timestamp="1581494455963" />
+    <state width="2505" height="379" key="GridCell.Tab.0.center" timestamp="1581539393808">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1868" height="261" key="GridCell.Tab.0.center/0.0.1920.1080/1920.500.1680.1050@0.0.1920.1080" timestamp="1581364495083" />
+    <state width="2505" height="379" key="GridCell.Tab.0.center/0.0.2560.1440@0.0.2560.1440" timestamp="1581539393808" />
+    <state width="1868" height="261" key="GridCell.Tab.0.center/0.23.1920.1057@0.23.1920.1057" timestamp="1581494455961" />
+    <state width="2505" height="379" key="GridCell.Tab.0.left" timestamp="1581539393807">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1868" height="261" key="GridCell.Tab.0.left/0.0.1920.1080/1920.500.1680.1050@0.0.1920.1080" timestamp="1581364495081" />
+    <state width="2505" height="379" key="GridCell.Tab.0.left/0.0.2560.1440@0.0.2560.1440" timestamp="1581539393807" />
+    <state width="1868" height="261" key="GridCell.Tab.0.left/0.23.1920.1057@0.23.1920.1057" timestamp="1581494455957" />
+    <state width="2505" height="379" key="GridCell.Tab.0.right" timestamp="1581539393808">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1868" height="261" key="GridCell.Tab.0.right/0.0.1920.1080/1920.500.1680.1050@0.0.1920.1080" timestamp="1581364495084" />
+    <state width="2505" height="379" key="GridCell.Tab.0.right/0.0.2560.1440@0.0.2560.1440" timestamp="1581539393808" />
+    <state width="1868" height="261" key="GridCell.Tab.0.right/0.23.1920.1057@0.23.1920.1057" timestamp="1581494455963" />
+    <state x="921" y="376" key="MultipleFileMergeDialog" timestamp="1581539194504">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="921" y="376" key="MultipleFileMergeDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1581539194504" />
+    <state x="302" y="88" key="SettingsEditor" timestamp="1581388859173">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="302" y="88" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1581388859173" />
+    <state x="345" y="91" key="SettingsEditor/0.0.1920.1080/1920.500.1680.1050@0.0.1920.1080" timestamp="1581361984414" />
+    <state x="460" y="217" key="Vcs.Push.Dialog.v2" timestamp="1581364688430">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="460" y="217" key="Vcs.Push.Dialog.v2/0.0.1920.1080/1920.500.1680.1050@0.0.1920.1080" timestamp="1581364688430" />
+    <state x="721" y="446" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581374465174">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="721" y="446" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080/1920.500.1680.1050@0.0.1920.1080" timestamp="1581374465174" />
+    <state width="500" height="60" key="javadoc.popup.new" timestamp="1581539026927">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="375" height="45" key="javadoc.popup.new/0.0.1680.1050/-2560.-1023.2560.1440@-2560.-1023.2560.1440" timestamp="1581474194119" />
+    <state width="375" height="45" key="javadoc.popup.new/0.0.1920.1080/1920.500.1680.1050@0.0.1920.1080" timestamp="1581492010691" />
+    <state width="500" height="60" key="javadoc.popup.new/0.0.2560.1440@0.0.2560.1440" timestamp="1581539026927" />
+  </component>
+</project>
