@@ -43,8 +43,8 @@ testController.testingAB = (req, res, next) => {
       await client.loadSpec()
 
       let opts = {
-        kind: 'VirtualService',
         apiVersion: 'networking.istio.io/v1alpha3',
+        kind: 'VirtualService', 
         metadata: {
           name: 'bookinfotest',
           namespace: 'default'
@@ -62,15 +62,7 @@ testController.testingAB = (req, res, next) => {
                 destination: {
                   host: '*',
                   subset: 'safe'
-                },
-                weight: '0'
-              },
-              {
-                destination: {
-                  host: '*',
-                  subset: 'safe'
-                },
-                weight: '100'
+                }
               }
             ]
           }]
