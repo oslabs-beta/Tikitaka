@@ -8,6 +8,7 @@ EXPOSE 3000
 # CMD ["node", "./server/server.js"]
 CMD ["npm", "start"]
 
+
 # FROM node:13
 
 # WORKDIR /usr/src/app

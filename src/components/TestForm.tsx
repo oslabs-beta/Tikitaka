@@ -6,6 +6,24 @@ import Button from 'react-bootstrap/Button'
 import InputGroup from 'react-bootstrap/InputGroup'
 interface Iprops{
 };
+interface ReqOptions {
+    method: string;
+    headers: any;
+    body: any;
+    redirect: any;
+}
+const myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+const vS = JSON.stringify({"apiVersion":"networking.istio.io/v1alpha3","kind":"VirtualService","metadata":{"annotations":{},"name":"aaa-cluster-ip-service","namespace":"default"},"spec":{"gateways":["ingress-gateway-configuration"],"hosts":["*"],"http":[{"match":[{"uri":{"prefix":"/topitop"}}],"route":[{"destination":{"host":"arman-cluster-ip-service"}}]},{"match":[{"uri":{"prefix":"/taksi"}}],"route":[{"destination":{"host":"client-cluster-ip-service","subset":"original"},"weight":90},{"destination":{"host":"client-cluster-ip-service","subset":"experimental"},"weight":10}]}]}});
+const reqOption:ReqOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: vS,
+    redirect: 'follow'
+};
+
+
+
 const TestForm: React.FC<Iprops> = () => {
     interface eachMetadataType {
         name: string;
@@ -41,7 +59,7 @@ const TestForm: React.FC<Iprops> = () => {
     });
     useEffect(() => {
         const getContainers = async () => {
-            let r = await fetch('http://localhost:8081/apis/apps/v1/namespaces/default/deployments/');
+            let r = await fetch('/dothis');
             let containers = await r.json();
             setContainers(containers);
         };
@@ -56,81 +74,13 @@ const TestForm: React.FC<Iprops> = () => {
     } else {
         dropDown.push(<option id='ryan'>tikitaka-ryan-image</option>);
     }
-    interface ReqOptions {
-        method: string;
-        headers: any;
-        body: any;
-    }
-    const vS = {
-        "apiVersion": "networking.istio.io/v1alpha3",
-        "kind": "VirtualService",
-        "metadata": {
-            "annotations": {},
-            "name": "pati-cluster-ip-service",
-            "namespace": "default"
-        },
-        "spec": {
-            "gateways": [
-                "ingress-gateway-configuration"
-            ],
-            "hosts": [
-                "*"
-            ],
-            "http": [
-                {
-                    "match": [
-                        {
-                            "uri": {
-                                "prefix": "/topitop"
-                            }
-                        }
-                    ],
-                    "route": [
-                        {
-                            "destination": {
-                                "host": "arman-cluster-ip-service"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "match": [
-                        {
-                            "uri": {
-                                "prefix": "/taksi"
-                            }
-                        }
-                    ],
-                    "route": [
-                        {
-                            "destination": {
-                                "host": "client-cluster-ip-service",
-                                "subset": "original"
-                            },
-                            "weight": 90
-                        },
-                        {
-                            "destination": {
-                                "host": "client-cluster-ip-service",
-                                "subset": "experimental"
-                            },
-                            "weight": 10
-                        }
-                    ]
-                }
-            ]
-        }
-    };
-    const reqOption:ReqOptions = {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: vS
-    };
+
+
     useEffect(() => {
         const addVirtualService = async () => {
-            let r = await fetch('http://localhost:8081/apis/apps/v1/namespaces/default/deployments/',reqOption);
-            let containers = await r.json();
-            setContainers(containers);
+            let r = await fetch('/dothis');
+            let c = await r.json();
+            console.log(c);
         };
         addVirtualService();
     },[]);

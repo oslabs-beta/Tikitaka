@@ -1,5 +1,4 @@
-const Client = require('kubernetes-client').Client;
-const Request = require('kubernetes-client/backends/request');
+const request = require('request');
 
 const testController = {};
 
@@ -33,7 +32,7 @@ testController.setup = (req, res, next) => {
 }
 
 /**
- * testingAB - 
+ * testingAB -
  */
 testController.testingAB = (req, res, next) => {
   async function applyDeploy () {
@@ -44,7 +43,7 @@ testController.testingAB = (req, res, next) => {
 
       let opts = {
         apiVersion: 'networking.istio.io/v1alpha3',
-        kind: 'VirtualService', 
+        kind: 'VirtualService',
         metadata: {
           name: 'bookinfotest',
           namespace: 'default'
@@ -69,11 +68,8 @@ testController.testingAB = (req, res, next) => {
         }
       }
       // opts = JSON.stringify(opts);
-<<<<<<< HEAD
 
-=======
       try{
->>>>>>> f5b62ce0291c4b238b0955003153ce0af08325c6
       const create = await client.apis['networking.istio.io'].v1alpha3.namespaces('default').virtualservices.post({body:opts})
       res.locals.data = create.body;
       console.log('Create:', create);
@@ -81,10 +77,10 @@ testController.testingAB = (req, res, next) => {
         res.locals.data = err;
       }
     } catch (err) {
-      if (err.code !== 409) throw err  
+      if (err.code !== 409) throw err
     }
     next();
-  }  
+  }
   applyDeploy()
 }
 
@@ -115,7 +111,7 @@ module.exports = testController;
 //       if (response) {
 //         console.log(`statusCode: ${response.statusCode}`);
 //       }
-//       // Parsing response body 
+//       // Parsing response body
 //       const regex = /\\"/g;
 //       let data = JSON.parse(body.replace(regex, "'"));
 
@@ -131,7 +127,7 @@ module.exports = testController;
 // };
 
 // /**
-//  * testingAB - 
+//  * testingAB -
 //  */
 // testController.testingAB = (req, res, next) => {
 //   // Conecting to K8s API

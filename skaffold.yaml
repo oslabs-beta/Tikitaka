@@ -4,7 +4,7 @@ metadata:
   name: istio-ab-testing
 build:
   artifacts:
-  - image: greenteaclassic/tikitaka-prod
+  - image: tikitaka1/tikitaka-stage
 deploy:
   kubectl:
     manifests:
