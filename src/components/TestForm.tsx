@@ -4,8 +4,10 @@ import Form from 'react-bootstrap/Form'
 import { Col, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button'
 import InputGroup from 'react-bootstrap/InputGroup'
+
 interface Iprops{
 };
+
 const TestForm: React.FC<Iprops> = () => {
     interface eachMetadataType {
         name: string;
@@ -50,19 +52,74 @@ const TestForm: React.FC<Iprops> = () => {
     const dropDown = [];
     if (containers.items.length > 1) {
         for(let i = 0; i < containers.items.length; i++) {
-            let list = <option id={`${i}`}>{containers.items[i].metadata.name}</option>
+            let list = <option id={`${i}`} value={containers.items[i].metadata.name}>{containers.items[i].metadata.name}</option>
             dropDown.push(list)
         }
     } else {
-        dropDown.push(<option id='ryan'>tikitaka-ryan-image</option>);
+        dropDown.push("None");
+        dropDown.push("None1");
+        dropDown.push("None2");
+        dropDown.push("None3");
     }
+    /////////////
+    // button //
+    ////////////
+
+    interface arrayType {
+        nameA: string;
+        weightA: number;
+        nameB: string;
+        addressB: string;
+        versionB: string;
+    }
+    // const [buttonText, setButtonText] = useState([{
+    //     nameA: '',
+    //     weightA: 0,
+    //     nameB: '',
+    //     addressB: '',
+    //     versionB: '',
+    // }]);
+
+    const [imageA, setImageA] = useState<string>('');
+    const dropdownHandler = (e:any) =>{
+        setImageA(e.target.value);
+        console.log(e.target.value)
+    };
+
+    const [weightA, setWeightA] = useState<number>(0);
+    const weightAHandler = (e:any) => {
+        setWeightA(e.target.value)
+    }
+
+    const [imageB, setImageB] = useState<string>('');
+    const imageHandler = (e:any) => {
+        setImageB(e.target.value)
+    }
+
+    const [address, setAddressB] = useState<string>('');
+    const addressHandler = (e:any) => {
+        setAddressB(e.target.value)
+    }
+
+    const [versionB, setVersionB] = useState<string>('');
+    const versionHandler = (e:any) => {
+        setVersionB(e.target.value)
+    }
+
+
+    const handleClick = (e:any) => {
+        e.preventDefault();
+    }
+
     return (
         <Form>
             <Form.Row>
                 <Form.Group as={Col} controlId="formGridState">
                     <Form.Label><h4>Docker Image A:</h4></Form.Label>
-                    <Form.Control as="select">
-                        {dropDown}
+                    <Form.Control as="select" onChange={(e) => {dropdownHandler(e)}}>
+                        {dropDown.map((item, i) => {
+                            return <option key={i} value={`${item}`}>{item}</option>
+                        })}
                     </Form.Control>
                     <br />
                     <InputGroup className="mb-3">
@@ -112,9 +169,10 @@ const TestForm: React.FC<Iprops> = () => {
                     <br />
                 </Form.Group>
             </Form.Row>
-            <Button variant="primary" type="submit" id="createTestBtn">
+            {/* <Button variant="primary" type="submit" id="createTestBtn">
                 Create A/B Test
-            </Button>
+            </Button> */}
+            <Button>Create A/B Testing</Button>
             <Button variant="primary">
                 Open Kiali
             </Button>
