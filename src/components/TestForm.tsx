@@ -24,7 +24,7 @@ export default class TestForm extends React.Component<Iprops, any>{
             })
         }
         let data: any = api(u);
-        console.log(data);ç
+        console.log(data);
         // data.items.forEach((item: any) => {
         //     data.push(item.metadata);
         //     console.log(item.metadata);
