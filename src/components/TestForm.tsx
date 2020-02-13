@@ -109,7 +109,6 @@ const TestForm: React.FC<Iprops> = () => {
 
     const handleSubmit = (e:any) => {
         e.preventDefault();
-        console.log('hello')
     }
 
     return (
