@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import Form from 'react-bootstrap/Form'
 import { Col, Row } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import InputGroup from 'react-bootstrap/InputGroup'
-interface Iprops{
-};
+
+interface Iprops{};
+
 const TestForm: React.FC<Iprops> = () => {
     interface eachMetadataType {
         name: string;
@@ -39,27 +40,24 @@ const TestForm: React.FC<Iprops> = () => {
         generation: 1,
         creationTimestamp: "2020-02-10T20:01:48Z"}, spec: {}, status: {}}]
     });
-    useEffect(() => {
-        const getContainers = async () => {
-            let r = await fetch('http://localhost:8081/apis/apps/v1/namespaces/default/deployments/');
-            let containers = await r.json();
-            setContainers(containers);
-        };
-        getContainers();
-    },[]);
+    const getContainers = async () => {
+        const r = await fetch('http://localhost:8081/apis/apps/v1/namespaces/default/deployments/');
+        const containers = await r.json();
+        setContainers(containers);
+    };
+    useEffect(() => {getContainers()}, []);
     const dropDown = [];
     if (containers.items.length > 1) {
         for(let i = 0; i < containers.items.length; i++) {
-            let list = <option id={`${i}`}>{containers.items[i].metadata.name}</option>
-            dropDown.push(list)
+            dropDown.push(<option key={`${i}`}>{containers.items[i].metadata.name}</option>);
         }
     } else {
-        dropDown.push(<option id='ryan'>tikitaka-ryan-image</option>);
+        dropDown.push(<option key='ryan'>tikitaka-ryan-image</option>);
     }
     return (
         <Form>
             <Form.Row>
-                <Form.Group as={Col} controlId="formGridState">
+                <Form.Group as={Col}>
                     <Form.Label><h4>Docker Image A:</h4></Form.Label>
                     <Form.Control as="select">
                         {dropDown}
@@ -76,7 +74,7 @@ const TestForm: React.FC<Iprops> = () => {
                         </InputGroup.Append>
                     </InputGroup>
                 </Form.Group>
-                <Form.Group as={Col} controlId="formGridState">
+                <Form.Group as={Col}>
                     <Form.Label><h4>Docker Image B: </h4></Form.Label>
                     <InputGroup className="mb-3">
                         <InputGroup.Prepend>
