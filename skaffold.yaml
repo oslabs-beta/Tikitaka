@@ -1,18 +1,11 @@
-apiVersion: skaffold/v1beta2
+apiVersion: skaffold/v2alpha3
 kind: Config
+metadata:
+  name: istio-ab-testing
 build:
-  local:
-    push: false
   artifacts:
-    - image: tikitaka1/tikitaka-stage
-      context: ../tikitakaStage
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        '**/*.js': .
-        '**/*.html': .
-        '**/*.css': .
+  - image: greenteaclassic/tikitaka-prod
 deploy:
   kubectl:
     manifests:
-      - k8s/tikitaka-app.yaml
+    - k8s/tikitaka-app.yaml
