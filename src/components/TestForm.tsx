@@ -54,6 +54,55 @@ const TestForm: React.FC<Iprops> = () => {
     } else {
         dropDown.push(<option key='ryan'>tikitaka-ryan-image</option>);
     }
+
+    // const vS = JSON.stringify({"apiVersion":"networking.istio.io/v1alpha3","kind":"VirtualService","metadata":{"annotations":{},"name":"aaa-cluster-ip-service","namespace":"default"},"spec":{"gateways":["ingress-gateway-configuration"],"hosts":["*"],"http":[{"match":[{"uri":{"prefix":"/topitop"}}],"route":[{"destination":{"host":"arman-cluster-ip-service"}}]},{"match":[{"uri":{"prefix":"/taksi"}}],"route":[{"destination":{"host":"client-cluster-ip-service","subset":"original"},"weight":90},{"destination":{"host":"client-cluster-ip-service","subset":"experimental"},"weight":10}]}]}});
+    // interface ReqOptions {
+    //     method: string;
+    //     headers: any;
+    //     body: any;
+    //     redirect: any;
+    // }
+    // const myHeaders = new Headers();
+    // myHeaders.append("Content-Type", "application/json");
+    // const reqOption:ReqOptions = {
+    //     method: 'POST',
+    //     headers: myHeaders,
+    //     body: vS,
+    //     redirect: 'follow'
+    // };
+    // useEffect(() => {
+    //     const addVirtualService = async () => {
+    //         fetch('http://localhost:8081/apis/networking.istio.io/v1alpha3/namespaces/default/virtualservices/', {
+    //             method: 'post',
+    //             credentials: 'include',
+    //             headers: {
+    //                 "Clear-Site-Data": "cache",
+    //                 'Accept': 'application/json',
+    //                 'Content-Type': 'application/json',
+    //                 'Access-Control-Allow-Methods': 'POST',
+    //                 'Access-Control-Allow-Origin': '*',
+    //                 'Access-Control-Allow-Headers': "Content-Type",
+    //                 'Access-Control-Max-Age': '86400',
+    //                 'Access-Control-Allow-Credentials': 'false'
+    //             },
+    //             body: vS
+    //         })
+            // .then(response => {
+            //     console.log('response: ', response);
+            //     return response.json();
+            // })
+            // .then(data => console.log('data posted: ', data));
+
+
+            // console.log('trying to post')
+            // let r = await fetch('http://localhost:8081/apis/networking.istio.io/v1alpha3/namespaces/default/virtualservices/', reqOption);
+            // let containers = await r.json();
+            // setContainers(containers);
+            // console.log('containers after post: ', containers);
+    //     };
+    //     addVirtualService();
+    // },[]);
+
     return (
         <Form>
             <Form.Row>
