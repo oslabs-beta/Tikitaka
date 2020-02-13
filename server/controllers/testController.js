@@ -68,7 +68,7 @@ testController.testingAB = (req, res, next) => {
           }]
         }
       }
-      // opts = JSON.stringify(opts);
+      opts = JSON.stringify(opts);
       try{
       const create = await client.apis['networking.istio.io'].v1alpha3.namespaces('default').virtualservices.post({body:opts})
       res.locals.data = create.body;
