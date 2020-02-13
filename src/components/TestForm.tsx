@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import InputGroup from 'react-bootstrap/InputGroup'
 
+
 interface Iprops{};
 
 const TestForm: React.FC<Iprops> = () => {
@@ -47,13 +48,15 @@ const TestForm: React.FC<Iprops> = () => {
     };
     useEffect(() => {getContainers()}, []);
     const dropDown = [];
-    if (containers.items.length > 1) {
-        for(let i = 0; i < containers.items.length; i++) {
-            dropDown.push(<option key={`${i}`}>{containers.items[i].metadata.name}</option>);
-        }
-    } else {
+    // if (containers.items.length > 0) {
+    //     for(let i = 0; i < containers.items.length; i++) {
+    //         dropDown.push(<option key={`${i}`}>{containers.items[i].metadata.name}</option>);
+    //     }
+    // } else {
         dropDown.push(<option key='ryan'>tikitaka-ryan-image</option>);
-    }
+        dropDown.push(<option key='arman'>tikitaka-arman-image</option>);
+        dropDown.push(<option key='cat'>tikitaka-cat-image</option>);
+    // }
     /////////////
     // button //
     ////////////
@@ -81,46 +84,51 @@ const TestForm: React.FC<Iprops> = () => {
 
     const [weightA, setWeightA] = useState<number>(0);
     const weightAHandler = (e:any) => {
-        setWeightA(e.target.value)
+        setWeightA(e.target.value);
+        console.log(weightA);
     }
 
     const [imageB, setImageB] = useState<string>('');
     const imageHandler = (e:any) => {
-        setImageB(e.target.value)
+        setImageB(e.target.value);
+        console.log(imageB);
     }
 
-    const [address, setAddressB] = useState<string>('');
+    const [addressB, setAddressB] = useState<string>('');
     const addressHandler = (e:any) => {
-        setAddressB(e.target.value)
+        setAddressB(e.target.value);
+        console.log(addressB);
     }
 
     const [versionB, setVersionB] = useState<string>('');
     const versionHandler = (e:any) => {
-        setVersionB(e.target.value)
+        setVersionB(e.target.value);
+        console.log(versionB)
     }
 
 
-    const handleClick = (e:any) => {
+    const handleSubmit = (e:any) => {
         e.preventDefault();
+        console.log('hello')
     }
 
     return (
         <React.Fragment>
             <iframe id="myFrame" width="100%" height="1000px" src="http://localhost:55917/kiali/console/overview?kiosk=true"></iframe>
-        <Form>
+        <Form onSubmit={handleSubmit}>
             <Form.Row>
                 <Form.Group as={Col}>
                     <Form.Label><h4>Docker Image A:</h4></Form.Label>
                     <Form.Control as="select" onChange={(e) => {dropdownHandler(e)}}>
-                        {dropDown.map((item, i) => {
-                            return <option key={i} value={`${item}`}>{item}</option>
-                        })}
+                        <option key={-1}>Choose image name...</option>
+                        {dropDown}
                     </Form.Control>
                     <br />
                     <InputGroup className="mb-3">
                         <Form.Control
                         placeholder="Canary weight (integer between 0-100)"
                         aria-label="Amount (to the nearest number)"
+                        onChange={weightAHandler}
                         />
                         <InputGroup.Append>
                         <InputGroup.Text>%</InputGroup.Text>
@@ -137,6 +145,7 @@ const TestForm: React.FC<Iprops> = () => {
                         <Form.Control
                         aria-label="Default"
                         aria-describedby="inputGroup-sizing-default"
+                        onChange={imageHandler}
                         />
                     </InputGroup>
                     <br />
@@ -148,6 +157,7 @@ const TestForm: React.FC<Iprops> = () => {
                         placeholder="Ex: 77af4d6b9913"
                         aria-label="Default"
                         aria-describedby="inputGroup-sizing-default"
+                        onChange={addressHandler}
                         />
                     </InputGroup>
                     <br />
@@ -159,6 +169,7 @@ const TestForm: React.FC<Iprops> = () => {
                         placeholder="1.0.0"
                         aria-label="Default"
                         aria-describedby="inputGroup-sizing-default"
+                        onChange={versionHandler}
                         />
                     </InputGroup>
                     <br />
@@ -167,7 +178,7 @@ const TestForm: React.FC<Iprops> = () => {
             {/* <Button variant="primary" type="submit" id="createTestBtn">
                 Create A/B Test
             </Button> */}
-            <Button>Create A/B Testing</Button>
+            <Button type="submit">Create A/B Testing</Button>
             <Button variant="primary">
                 Open Kiali
             </Button>
