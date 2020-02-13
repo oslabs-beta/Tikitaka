@@ -26,11 +26,3 @@ spec:
   - route:
     - destination:
         host: tikitaka
-    corsPolicy:
-      allowOrigin:
-        http://0.0.0.0:8080/
-      allowMethods:
-        - POST
-        - GET
-      allowCredentials: false
-      maxAge: "24h"
