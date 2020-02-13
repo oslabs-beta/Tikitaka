@@ -12,7 +12,8 @@ module.exports = {
   mode: 'development', 
   devServer: {
     // Required for Docker to work with dev server
-    host: '0.0.0.0',
+    // host: '0.0.0.0',
+    host:'localhost',
     port: 8080,
     // match the output path
     contentBase: path.resolve(__dirname, 'build'),
@@ -29,6 +30,10 @@ module.exports = {
     // routes api fetch requests from localhost:8080/api/* (webpack dev server) to localhost:3000/api/* (where our Express server is running)
     proxy: {
       '/testing-ab': {
+        target: 'http://localhost:3000/',
+        secure: false,
+      },
+      '/data': {
         target: 'http://localhost:3000/',
         secure: false,
       },
