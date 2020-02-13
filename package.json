@@ -27,15 +27,17 @@
     "@vx/network": "0.0.193-alpha.2",
     "@vx/shape": "0.0.193-alpha.2",
     "bootstrap": "^4.4.1",
+    "cors": "^2.8.5",
     "d3-hierarchy": "^1.1.9",
     "d3-shape": "^1.3.7",
     "express": "^4.17.1",
     "kubernetes-client": "^8.3.6",
+    "node-fetch": "^2.6.0",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
-    "request": "^2.88.0",
-    "react-router-dom": "^5.1.2"
+    "react-router-dom": "^5.1.2",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2",

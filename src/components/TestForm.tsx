@@ -11,20 +11,20 @@ interface Iprops{
 export default class TestForm extends React.Component<Iprops, any>{
     public render(): JSX.Element{
 
-        const u:string = 'http://localhost:8081/apis/apps/v1/namespaces/default/deployments/';
+        // const u:string = 'http://localhost:8081/apis/apps/v1/namespaces/default/deployments/';
        
-        function api<T>(url: string): Promise<any> {
-        return fetch(url, {
-            redirect: 'follow'})
-            .then(response => {
-            if (!response.ok) {
-                throw new Error(response.statusText)
-            }
-            return response.json()
-            })
-        }
-        let data: any = api(u);
-        console.log(data);
+        // function api<T>(url: string): Promise<any> {
+        // return fetch(url, {
+        //     redirect: 'follow'})
+        //     .then(response => {
+        //     if (!response.ok) {
+        //         throw new Error(response.statusText)
+        //     }
+        //     return response.json()
+        //     })
+        // }
+        // let data: any = api(u);
+        // console.log(data);
         // data.items.forEach((item: any) => {
         //     data.push(item.metadata);
         //     console.log(item.metadata);
@@ -32,6 +32,8 @@ export default class TestForm extends React.Component<Iprops, any>{
 
         // let deployments[]
         return(
+            <React.Fragment>
+            <iframe id="myFrame" width="100%" height="1000px" src="http://localhost:55917/kiali/console/overview?kiosk=true"></iframe>
             <Form>
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridState">
@@ -98,10 +100,8 @@ export default class TestForm extends React.Component<Iprops, any>{
                 <Button variant="primary" type="submit" id="createTestBtn">
                     Create A/B Test
                 </Button>
-                <Button variant="primary">
-                    Open Kiali
-                </Button>
             </Form>
+            </React.Fragment>
         )
     }
 }

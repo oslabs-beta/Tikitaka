@@ -90,8 +90,8 @@ export class App extends React.Component<{}, IState>{
                 </Col>
                 <Col xl={12} className="header">
                     <h1>Welcome to Tikitaka</h1>
-                </Col>
-                <Col xl={12} className="content">
+                </Col>              
+                <Col xl={12} className="content">  
                     <Router>
                     <div>
                         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="fixed-left" fixed="top">
