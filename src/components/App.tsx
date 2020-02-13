@@ -88,13 +88,7 @@ const getContainers = async () => {
                 <Col>
                     <Sidebar />
                 </Col>
-                <Col >
-                <Navbar expand="lg" variant="dark" bg="dark"  fixed="top" className="header">
-                    <Container>
-                        <Navbar.Brand href="/">Welcome</Navbar.Brand>
-                    </Container>
-                </Navbar>
-                </Col>
+                
                 <Col xl={12} className="content">
                     <Router>
                     <div>

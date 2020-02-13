@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import Form from 'react-bootstrap/Form'
 import { Col, Row } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import InputGroup from 'react-bootstrap/InputGroup'
 
@@ -46,13 +46,13 @@ const TestForm: React.FC = () => {
         }
     } else {
         dropDown.push("None");
-        dropDown.push("None2");
-        dropDown.push("None3");
     }
     return (
+        <React.Fragment>
+            <iframe id="myFrame" width="100%" height="1000px" src="http://localhost:55917/kiali/console/overview?kiosk=true"></iframe>
         <Form>
             <Form.Row>
-                <Form.Group as={Col} controlId="formGridState">
+                <Form.Group as={Col}>
                     <Form.Label><h4>Docker Image A:</h4></Form.Label>
                     <Form.Control as="select" onChange={ (e)=>{dropdownHandler(e)}}>
                         {dropDown.map((item,i) => {
@@ -71,7 +71,7 @@ const TestForm: React.FC = () => {
                         </InputGroup.Append>
                     </InputGroup>
                 </Form.Group>
-                <Form.Group as={Col} controlId="formGridState">
+                <Form.Group as={Col}>
                     <Form.Label><h4>Docker Image B: </h4></Form.Label>
                     <InputGroup className="mb-3">
                         <InputGroup.Prepend>
@@ -110,10 +110,8 @@ const TestForm: React.FC = () => {
             <Button variant="primary" type="submit" id="createTestBtn">
                 Create A/B Test
             </Button>
-            <Button variant="primary">
-                Open Kiali
-            </Button>
         </Form>
+        </React.Fragment>
     );
 }
 
