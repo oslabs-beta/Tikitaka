@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import Form from 'react-bootstrap/Form'
 import { Col, Row } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import InputGroup from 'react-bootstrap/InputGroup'
 
-interface Iprops{
-};
+interface Iprops{};
 
 const TestForm: React.FC<Iprops> = () => {
     interface eachMetadataType {
@@ -41,25 +40,19 @@ const TestForm: React.FC<Iprops> = () => {
         generation: 1,
         creationTimestamp: "2020-02-10T20:01:48Z"}, spec: {}, status: {}}]
     });
-    useEffect(() => {
-        const getContainers = async () => {
-            let r = await fetch('http://localhost:8081/apis/apps/v1/namespaces/default/deployments/');
-            let containers = await r.json();
-            setContainers(containers);
-        };
-        getContainers();
-    },[]);
+    const getContainers = async () => {
+        const r = await fetch('http://localhost:8081/apis/apps/v1/namespaces/default/deployments/');
+        const containers = await r.json();
+        setContainers(containers);
+    };
+    useEffect(() => {getContainers()}, []);
     const dropDown = [];
     if (containers.items.length > 1) {
         for(let i = 0; i < containers.items.length; i++) {
-            let list = <option id={`${i}`} value={containers.items[i].metadata.name}>{containers.items[i].metadata.name}</option>
-            dropDown.push(list)
+            dropDown.push(<option key={`${i}`}>{containers.items[i].metadata.name}</option>);
         }
     } else {
-        dropDown.push("None");
-        dropDown.push("None1");
-        dropDown.push("None2");
-        dropDown.push("None3");
+        dropDown.push(<option key='ryan'>tikitaka-ryan-image</option>);
     }
     /////////////
     // button //
@@ -112,9 +105,11 @@ const TestForm: React.FC<Iprops> = () => {
     }
 
     return (
+        <React.Fragment>
+            <iframe id="myFrame" width="100%" height="1000px" src="http://localhost:55917/kiali/console/overview?kiosk=true"></iframe>
         <Form>
             <Form.Row>
-                <Form.Group as={Col} controlId="formGridState">
+                <Form.Group as={Col}>
                     <Form.Label><h4>Docker Image A:</h4></Form.Label>
                     <Form.Control as="select" onChange={(e) => {dropdownHandler(e)}}>
                         {dropDown.map((item, i) => {
@@ -133,7 +128,7 @@ const TestForm: React.FC<Iprops> = () => {
                         </InputGroup.Append>
                     </InputGroup>
                 </Form.Group>
-                <Form.Group as={Col} controlId="formGridState">
+                <Form.Group as={Col}>
                     <Form.Label><h4>Docker Image B: </h4></Form.Label>
                     <InputGroup className="mb-3">
                         <InputGroup.Prepend>
@@ -177,6 +172,7 @@ const TestForm: React.FC<Iprops> = () => {
                 Open Kiali
             </Button>
         </Form>
+        </React.Fragment>
     );
 }
 export default TestForm;

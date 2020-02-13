@@ -1,7 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const cors = require('cors');
 const testController = require('./controllers/testController');
+
 // const mongoose = require('mongoose');
 // const { History } = require('./models/historyModels');
 // const db = require('./config/keys').MONGO_URI;
@@ -20,14 +22,23 @@ const app = express();
 const PORT = process.env.PORT || '3000';
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../build/')));
+app.use(cors());
+app.use(cors({credentials:true, origin:'http://localhost:3000'}))
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // localhost 8080
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
-app.get('/getDeploys',testController.setup, (req,res) => {
-  res.json(res.locals.data);
+app.get('/data',testController.getData, (req,res) => {
+  // res.json(res.locals.data);
+  res.send('data')
 });
 app.get('/testing-ab',testController.testingAB, (req,res) => {
-  res.json(res.locals.data);
+  // res.json(res.locals.data);
+  res.send('testing-ab')
 });
 
 // app.get('/history', (req, res) => {
