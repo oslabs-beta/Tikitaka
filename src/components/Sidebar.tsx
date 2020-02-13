@@ -5,11 +5,11 @@ import Nav from 'react-bootstrap/Nav'
 export default class Sidebar extends React.Component<any, any>{
     public render(): JSX.Element{
         return(
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="fixed-left" fixed="top">
+            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
                 <Navbar.Brand href="#home">TIKITAKA</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="mr-auto"  >
+                    <Nav variant="pills" className="mr-auto"  >
                         <Nav.Link href="#overview">Overview</Nav.Link>
                         <Nav.Link href="about.html">About</Nav.Link>
                         <Nav.Link href="">Builds</Nav.Link>
