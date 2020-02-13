@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -16,26 +17,23 @@ import TestDisplay from './TestDisplay';
 // Typescript: because states are given, need to define as interface
 interface IState 
 {
-    currentWindow: String;
+    
 }
 
                                      // <Props, State>
-export class App extends React.Component<{}, IState>{
-//===================================================================================================//
-//                                          CONSTRUCTOR                                              //
-//===================================================================================================//
-    constructor(props: {}) {
-        super(props);
+export const App: React.FC<IState>  = props => {
 
-        // Defining state
-        this.state = {
-            currentWindow:"home"
-        }
-    }
-//===================================================================================================//
-//                                            METHODS                                                //
-//===================================================================================================//
+const [ containers, setContainers] = useState<any[]>([]);
 
+const getContainers = async () => {
+    let r = await fetch('http://localhost:8081/apis/apps/v1/namespaces/default/deployments/');
+    let containers = await r.json();
+    setContainers(containers);
+}
+
+ useEffect(()=>{
+    getContainers();
+},[])
 //=============================================PUBLIC
     // public handleSubmit(e: React.FormEvent<HTMLFormElement>): void{
     //     // Type of e is called = React.FormEvent<HTMLFormElement>
@@ -82,7 +80,7 @@ export class App extends React.Component<{}, IState>{
 //===================================================================================================//
 //                                            RENDER                                                 //
 //===================================================================================================//
-    public render(): JSX.Element{
+   
 
         return (
         <Container fluid>
@@ -100,6 +98,7 @@ export class App extends React.Component<{}, IState>{
                 <Col xl={12} className="content">
                     <Router>
                     <div>
+                        {console.log(containers)}
                         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="fixed-left" fixed="top">
                             <Navbar.Brand>TIKITAKA</Navbar.Brand>
                             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -138,7 +137,7 @@ export class App extends React.Component<{}, IState>{
             </Row>
         </Container>
         );
-    }
+    
 
 
 //=============================================PRIVATE
@@ -147,3 +146,5 @@ export class App extends React.Component<{}, IState>{
 //         return date.getTime();
 //     }
 } 
+
+export default App;

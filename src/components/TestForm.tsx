@@ -4,29 +4,11 @@ import Form from 'react-bootstrap/Form'
 import { Col, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button'
 import InputGroup from 'react-bootstrap/InputGroup'
-interface Iprops{
-};
-const TestForm: React.FC<Iprops> = () => {
-    interface eachMetadataType {
-        name: string;
-        namespace: string;
-        selfLink: string;
-        uid: string;
-        resourceVersion: string;
-        generation: number;
-        creationTimestamp: string;
-    }
-    interface eachItemType {
-        metadata: eachMetadataType;
-        spec: object;
-        status: object;
-    }
-    interface containersType {
-        kind: string;
-        apiVersion: string;
-        metadata: object;
-        items: eachItemType[];
-    }
+
+const TestForm: React.FC = () => {
+    const dropDown = [];
+    const [imageA, setimageA] = useState<string>('')
+
     const [containers, setContainers] = useState<containersType>({
         kind: '',
         apiVersion: '',
@@ -39,6 +21,9 @@ const TestForm: React.FC<Iprops> = () => {
         generation: 1,
         creationTimestamp: "2020-02-10T20:01:48Z"}, spec: {}, status: {}}]
     });
+
+    
+    
     useEffect(() => {
         const getContainers = async () => {
             let r = await fetch('http://localhost:8081/apis/apps/v1/namespaces/default/deployments/');
@@ -47,22 +32,32 @@ const TestForm: React.FC<Iprops> = () => {
         };
         getContainers();
     },[]);
-    const dropDown = [];
+    
+    const dropdownHandler = (e:any) =>{
+        setimageA(e.target.value);
+        console.log(imageA);
+    }
+    
+
     if (containers.items.length > 1) {
         for(let i = 0; i < containers.items.length; i++) {
-            let list = <option id={`${i}`}>{containers.items[i].metadata.name}</option>
+            let list = <option key={`${i}`} value={containers.items[i].metadata.name}>{containers.items[i].metadata.name}</option>
             dropDown.push(list)
         }
     } else {
-        dropDown.push(<option id='ryan'>tikitaka-ryan-image</option>);
+        dropDown.push("None");
+        dropDown.push("None2");
+        dropDown.push("None3");
     }
     return (
         <Form>
             <Form.Row>
                 <Form.Group as={Col} controlId="formGridState">
                     <Form.Label><h4>Docker Image A:</h4></Form.Label>
-                    <Form.Control as="select">
-                        {dropDown}
+                    <Form.Control as="select" onChange={ (e)=>{dropdownHandler(e)}}>
+                        {dropDown.map((item,i) => {
+                            return <option key={i} value={`${item}`} onClick={ (e) => {dropdownHandler(e)}} >{item}</option>
+                        })}
                     </Form.Control>
                     <br />
                     <InputGroup className="mb-3">
@@ -120,5 +115,26 @@ const TestForm: React.FC<Iprops> = () => {
             </Button>
         </Form>
     );
+}
+
+interface eachMetadataType {
+    name: string;
+    namespace: string;
+    selfLink: string;
+    uid: string;
+    resourceVersion: string;
+    generation: number;
+    creationTimestamp: string;
+}
+interface eachItemType {
+    metadata: eachMetadataType;
+    spec: object;
+    status: object;
+}
+interface containersType {
+    kind: string;
+    apiVersion: string;
+    metadata: object;
+    items: eachItemType[];
 }
 export default TestForm;
