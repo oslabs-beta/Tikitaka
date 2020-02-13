@@ -4,12 +4,37 @@ import { Col, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button'
 import InputGroup from 'react-bootstrap/InputGroup'
 
-interface Iprops{
 
-}
+import { useState, useEffect } from 'react';
+const opt = {
+    "apiVersion": "networking.istio.io/v1alpha3",
+    "kind": "VirtualService",
+    "metadata": {
+        "name": "aaaa"
+    },
+    "spec": {
+        "hosts": [
+            "*"
+        ],
+        "gateways": [
+            "tikitaka-gateway"
+        ],
+        "http": [
+            {
+                "route": [
+                    {
+                        "destination": {
+                            "host": "aaaa"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+};
 
-export default class TestForm extends React.Component<Iprops, any>{
-    public render(): JSX.Element{
+
+const TestForm: React.FC<any>  = props =>{
 
         const u:string = 'http://localhost:8001/apis/apps/v1/namespaces/default/deployments/';
 
@@ -20,14 +45,59 @@ export default class TestForm extends React.Component<Iprops, any>{
                 if (!response.ok) {
                     throw new Error(response.statusText)
                 }
-                return response.json();
+                const data: any = await response.json();
+                return data;
                 })
         }
         let data: any = api(u);
         console.log(data);
 
+// example consuming code
+        console.log('habihubi', (async () => {
+            interface HttpResponse<T> extends Response {
+                parsedBody?: T;
+            }
+            async function http<T>(
+                request: RequestInfo
+            ): Promise<HttpResponse<T>> {
+                const response: HttpResponse<T> = await fetch(
+                    request
+                );
+                response.parsedBody = await response.json();
+                return response;
+            }
+
+// example consuming code
+            const response = await http<any>(
+                "http://localhost:8001/apis/apps/v1/namespaces/default/deployments/"
+            )
+        }
+        )());
+        interface Options {
+            method: string;
+            headers: any;
+            body: any;
+            status: number;
+        }
+        const [virtualServices, addVirtualService] = useState<any[]>([]);
+        const options:Options = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: opt,
+            status: 200
+        };
+        const getContainers = async () => {
+            let response = await fetch('http://localhost:8001/apis/networking.istio.io/v1alpha3/namespaces/default/virtualservices/',options);
+            let vS = await response.json();
+            addVirtualService([...virtualServices, vS]);
+        };
+        useEffect( () => {
+            getContainers();
+        }
+            , []);
+
         return(
-            <Form>
+            <Form onSubmit={() => console.log([...virtualServices])}>
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridState">
                         <Form.Label><h4>Docker Image A:</h4></Form.Label>
@@ -98,5 +168,6 @@ export default class TestForm extends React.Component<Iprops, any>{
                 </Button>
             </Form>
         )
-    }
-}
+};
+
+export default TestForm;

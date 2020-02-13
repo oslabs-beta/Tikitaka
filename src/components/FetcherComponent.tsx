@@ -1,38 +1,49 @@
-// import * as React from 'react';
-// import Form from "react-bootstrap/Form";
-//
-//
-// interface Iprops{
-//
-// }
-// const opts: Iprops = {
-//
-// }
-// export default class TestForm extends React.Component<Iprops, any>{
-//     public render(): JSX.Element{
-//
-//         const u:string = 'http://localhost:8001/apis/apps/v1/namespaces/default/deployments/';
-//
-//         function api<T>(url: string): Promise<any> {
-//             return fetch(url, {
-//                 method: "POST",
-//                 body: JSON.stringify(opts),
-//                 redirect: 'follow'})
-//                 .then(response => {
-//                     if (!response.ok) {
-//                         throw new Error(response.statusText)
-//                     }
-//                     return response.json()
-//                 })
-//         }
-//         let data: any = api(u);
-//         console.log(data);
-//
-//         return(
-//             <Form>
-//
-//             </Form>
-//         )
-//     }
-// }
+import * as React from 'react';
+import { useState, useEffect } from 'react';
+const opt = {
+    "apiVersion": "networking.istio.io/v1alpha3",
+    "kind": "VirtualService",
+    "metadata": {
+        "name": "tikitaka"
+    },
+    "spec": {
+        "hosts": [
+            "*"
+        ],
+        "gateways": [
+            "tikitaka-gateway"
+        ],
+        "http": [
+            {
+                "route": [
+                    {
+                        "destination": {
+                            "host": "tikitaka"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+};
+const Fetcher: React.FC<any>  = props => {
+    const [virtualServices, addVirtualService] = useState<any[]>([]);
+    const getContainers = async () => {
+        let response = await fetch('http://localhost:8081/apis/apps/v1/namespaces/default/deployments/',{
+            method: 'POST',
+            body: JSON.stringify(opt)
+        });
+        let vS = await response.json();
+        addVirtualService([...virtualServices, vS]);
+    };
+    useEffect(() => {getContainers()}
+    , []);
+        const result: any[] = [...virtualServices];
+    return (
+        <div>
+            {result}
+        </div>
+    )
+};
 
+export default Fetcher;
