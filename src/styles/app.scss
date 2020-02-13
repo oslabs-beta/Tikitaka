@@ -19,7 +19,6 @@ body {
     font-family: 'Roboto', sans-serif;
     color: #202020;
     background-color: #fbfbfb;
-    font-smooth: always;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -116,10 +115,7 @@ a{
 $navbar-dark-active-color: rgb(255, 0, 55);
 
 .header{
-    border: 1px solid red;
-    background-color: white;
-    color: #343a40;
-    margin-bottom: 20px;
+    padding-left: 232px !important;
 }
 
 .createTestBtn {
@@ -131,6 +127,11 @@ $navbar-dark-active-color: rgb(255, 0, 55);
     margin: auto;
   }
 
+
+
+.content {
+    padding-top: 100px;
+}
 @import "../../node_modules/bootstrap/scss/bootstrap";
 @import "../../node_modules/bootstrap/scss/functions";
 @import "../../node_modules/bootstrap/scss/variables";

@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const testController = require('./controllers/testController');
+const cors = require('cors');
+
 // const mongoose = require('mongoose');
 // const { History } = require('./models/historyModels');
 // const db = require('./config/keys').MONGO_URI;
@@ -19,6 +21,12 @@ const testController = require('./controllers/testController');
 const app = express();
 
 const PORT = process.env.PORT || '3000';
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // localhost 8080
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
