@@ -1,14 +1,16 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext, createContext} from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import InputGroup from 'react-bootstrap/InputGroup'
+// import { requestContext } from '../context/tikitakaContext'
+import request = require('request');
 
 
 interface Iprops{};
 
-const TestForm: React.FC<Iprops> = () => {
+const TestForm: React.FC<Iprops> = (props) => {
     interface eachMetadataType {
         name: string;
         namespace: string;
@@ -17,18 +19,18 @@ const TestForm: React.FC<Iprops> = () => {
         resourceVersion: string;
         generation: number;
         creationTimestamp: string;
-    }
+    };
     interface eachItemType {
         metadata: eachMetadataType;
         spec: object;
         status: object;
-    }
+    };
     interface containersType {
         kind: string;
         apiVersion: string;
         metadata: object;
         items: eachItemType[];
-    }
+    };
     const [containers, setContainers] = useState<containersType>({
         kind: '',
         apiVersion: '',
@@ -57,24 +59,18 @@ const TestForm: React.FC<Iprops> = () => {
         dropDown.push(<option key='arman'>tikitaka-arman-image</option>);
         dropDown.push(<option key='cat'>tikitaka-cat-image</option>);
     // }
+
+
     /////////////
     // button //
     ////////////
-
     interface arrayType {
         nameA: string;
         weightA: number;
         nameB: string;
         addressB: string;
         versionB: string;
-    }
-    // const [buttonText, setButtonText] = useState([{
-    //     nameA: '',
-    //     weightA: 0,
-    //     nameB: '',
-    //     addressB: '',
-    //     versionB: '',
-    // }]);
+    };
 
     const [imageA, setImageA] = useState<string>('');
     const dropdownHandler = (e:any) =>{
@@ -86,31 +82,53 @@ const TestForm: React.FC<Iprops> = () => {
     const weightAHandler = (e:any) => {
         setWeightA(e.target.value);
         console.log(weightA);
-    }
+    };
 
     const [imageB, setImageB] = useState<string>('');
     const imageHandler = (e:any) => {
         setImageB(e.target.value);
         console.log(imageB);
-    }
+    };
 
     const [addressB, setAddressB] = useState<string>('');
     const addressHandler = (e:any) => {
         setAddressB(e.target.value);
         console.log(addressB);
-    }
+    };
 
     const [versionB, setVersionB] = useState<string>('');
     const versionHandler = (e:any) => {
         setVersionB(e.target.value);
         console.log(versionB)
-    }
+    };
 
+
+    interface ITheme {
+        Aimage: string,
+        Aweight: number,
+        Bimage: string,
+        Baddress: string,
+        Bversion: string,
+    };
+
+    // The standard way to create context. It takes an initial value object
+    const ThemeContext = createContext<ITheme>({
+        Aimage: imageA,
+        Aweight: weightA,
+        Bimage: imageB,
+        Baddress: addressB,
+        Bversion: versionB,
+    });
+
+    // Accessing context in a child component
+    const themeContext = useContext<ITheme>(ThemeContext);
 
     const handleSubmit = (e:any) => {
         e.preventDefault();
         console.log('successfully bound handleSubmit to the button');
-    }
+        // console.log('request context', requestContext);
+        console.log(themeContext)
+    };
 
     return (
         <React.Fragment>
@@ -185,5 +203,5 @@ const TestForm: React.FC<Iprops> = () => {
         </Form>
         </React.Fragment>
     );
-}
+};
 export default TestForm;
