@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, createContext } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -8,7 +8,8 @@ import { HistoryContext } from '../context/historyContext';
 
 interface Iprops{};
 
-const TestForm: React.FC<Iprops> = () => {
+const TestForm: React.FC<Iprops> = (props) => {
+    const { history, setHistory } = useContext(HistoryContext);
     interface eachMetadataType {
         name: string;
         namespace: string;
@@ -17,18 +18,18 @@ const TestForm: React.FC<Iprops> = () => {
         resourceVersion: string;
         generation: number;
         creationTimestamp: string;
-    }
+    };
     interface eachItemType {
         metadata: eachMetadataType;
         spec: object;
         status: object;
-    }
+    };
     interface containersType {
         kind: string;
         apiVersion: string;
         metadata: object;
         items: eachItemType[];
-    }
+    };
     const [containers, setContainers] = useState<containersType>({
         kind: '',
         apiVersion: '',
@@ -48,32 +49,27 @@ const TestForm: React.FC<Iprops> = () => {
     };
     useEffect(() => {getContainers()}, []);
     const dropDown = [];
-    if (containers.items.length > 1) {
+    if (containers.items.length > 0) {
         for(let i = 0; i < containers.items.length; i++) {
             dropDown.push(<option key={`${i}`}>{containers.items[i].metadata.name}</option>);
         }
     } else {
         dropDown.push(<option key='ryan'>tikitaka-ryan-image</option>);
+        dropDown.push(<option key='arman'>tikitaka-arman-image</option>);
+        dropDown.push(<option key='cat'>tikitaka-cat-image</option>);
     }
 
-    const { history, setHistory } = useContext(HistoryContext);
-    console.log('h: ', history);
-    console.log('set his', setHistory)
-    
+    /////////////
+    // button //
+    ////////////
     interface arrayType {
         nameA: string;
         weightA: number;
         nameB: string;
         addressB: string;
         versionB: string;
-    }
-    // const [buttonText, setButtonText] = useState([{
-    //     nameA: '',
-    //     weightA: 0,
-    //     nameB: '',
-    //     addressB: '',
-    //     versionB: '',
-    // }]);
+    };
+
     const [imageA, setImageA] = useState<string>('');
     const dropdownHandler = (e:any) =>{
         setImageA(e.target.value);
@@ -83,22 +79,46 @@ const TestForm: React.FC<Iprops> = () => {
     const weightAHandler = (e:any) => {
         setWeightA(e.target.value);
         console.log(weightA);
-    }
+    };
+
     const [imageB, setImageB] = useState<string>('');
     const imageHandler = (e:any) => {
         setImageB(e.target.value);
         console.log(imageB);
-    }
+    };
+
     const [addressB, setAddressB] = useState<string>('');
     const addressHandler = (e:any) => {
         setAddressB(e.target.value);
         console.log(addressB);
-    }
+    };
+
     const [versionB, setVersionB] = useState<string>('');
     const versionHandler = (e:any) => {
         setVersionB(e.target.value);
         console.log(versionB)
-    }
+    };
+
+
+    interface ITheme {
+        Aimage: string,
+        Aweight: number,
+        Bimage: string,
+        Baddress: string,
+        Bversion: string,
+    };
+
+    // The standard way to create context. It takes an initial value object
+    const ThemeContext = createContext<ITheme>({
+        Aimage: imageA,
+        Aweight: weightA,
+        Bimage: imageB,
+        Baddress: addressB,
+        Bversion: versionB,
+    });
+
+    // Accessing context in a child component
+    const themeContext = useContext<ITheme>(ThemeContext);
 
     const handleSubmit = (e:any) => {
         e.preventDefault();
@@ -183,5 +203,5 @@ const TestForm: React.FC<Iprops> = () => {
         </Form>
         </React.Fragment>
     );
-}
+};
 export default TestForm;
