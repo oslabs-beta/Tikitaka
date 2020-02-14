@@ -1,13 +1,17 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
-import Carousel from 'react-bootstrap/Carousel'
+import { useState, useEffect, useContext } from 'react';
+import Carousel from 'react-bootstrap/Carousel';
+import { HistoryContext } from '../context/historyContext';
 
-interface Iprops{
+interface Iprops{}
 
-}
+const TestDisplay: React.FC<Iprops> = () => {
+// export default class TestDisplay extends React.Component<Iprops, any>{
+    const { history, setHistory } = useContext(HistoryContext);
+    console.log('history from testdisplay component', history);
 
-export default class TestDisplay extends React.Component<Iprops, any>{
-    public render(): JSX.Element{
+
+    // public render(): JSX.Element{
         return(
             <Carousel>
                 <Carousel.Item>
@@ -59,6 +63,7 @@ export default class TestDisplay extends React.Component<Iprops, any>{
                 </Carousel.Item>
             </Carousel>
         )
-    }
+    // }
 }
 
+export default TestDisplay;

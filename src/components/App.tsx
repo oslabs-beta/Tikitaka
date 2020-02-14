@@ -8,7 +8,7 @@ import Sidebar from './Sidebar';
 import TestForm from './TestForm';
 import About from './About';
 import TestDisplay from './TestDisplay';
-
+import { HistoryProvider } from '../context/historyContext';
 
 //===================================================================================================//
 //                                          INTERFACE                                                //
@@ -85,6 +85,7 @@ export class App extends React.Component<{}, IState>{
     public render(): JSX.Element{
         return (
         <Container fluid>
+            <HistoryProvider>
             <Row>
                 <Col>
                     <Sidebar />
@@ -135,6 +136,7 @@ export class App extends React.Component<{}, IState>{
                     </Router>
                 </Col>
             </Row>
+            </HistoryProvider>
         </Container>
         );
     }
