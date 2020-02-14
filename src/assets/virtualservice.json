@@ -18,7 +18,15 @@
           "destination": {
             "host": "*",
             "subset": "safe"
-          }
+          },
+          "weight": 50
+        },
+        {
+          "destination": {
+            "host": "*",
+            "subset": "test"
+          },
+          "weight": 50
         }
       ]
     }]
