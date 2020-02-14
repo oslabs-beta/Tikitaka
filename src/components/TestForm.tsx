@@ -56,7 +56,7 @@ const TestForm: React.FC<Iprops> = () => {
     }
     return (
         <React.Fragment>
-            <iframe id="myFrame" width="100%" height="1000px" src="http://localhost:55917/kiali/console/overview?kiosk=true"></iframe>
+            <iframe id="myFrame" width="100%" height="1000px" src="http://localhost:49595/kiali/console/overview?kiosk=true"></iframe>
         <Form>
             <Form.Row>
                 <Form.Group as={Col}>

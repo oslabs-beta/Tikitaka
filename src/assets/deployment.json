@@ -1,26 +1,40 @@
 {
-  "apiVersion": "networking.istio.io/v1alpha3",
-  "kind": "VirtualService", 
+  "apiVersion": "apps/v1",
+  "kind": "Deployment", 
   "metadata": {
-      "name": "NAMEOFTHEVIRTUAL",
-      "namespace": "default"
+    "name": "NAMEOFTHEDEPLOYMENT",
+    "labels": {
+      "version": "v1"
+    }
   },
   "spec": {
-    "gateways":[
-      "NAMEOFGATEWAY"
-    ],
-    "hosts": [
-      "*"
-    ],
-    "http": [{
-      "route": [
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "NAMEOFAPP"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "NAMEOFAPP",
+          "version": "v1"
+        }
+      }
+    },
+    "spec": {
+      "containers":[
         {
-          "destination": {
-            "host": "*",
-            "subset": "safe"
-          }
+          "name": "NAMEOFAP",
+          "image": "IMAGESOURCE",
+          "ports": [
+            {
+              "containerPort": 3000
+            }
+          ],
+          "imagePullPolicy": "Always"
         }
       ]
-    }]
+    }
   }
 }
