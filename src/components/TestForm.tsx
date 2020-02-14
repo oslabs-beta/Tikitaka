@@ -49,7 +49,7 @@ const TestForm: React.FC<Iprops> = (props) => {
     };
     useEffect(() => {getContainers()}, []);
     const dropDown = [];
-    if (containers.items.length > 0) {
+    if (containers.items.length > 1) {
         for(let i = 0; i < containers.items.length; i++) {
             dropDown.push(<option key={`${i}`}>{containers.items[i].metadata.name}</option>);
         }
