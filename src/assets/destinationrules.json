@@ -1,0 +1,26 @@
+{
+  "apiVersion": "networking.istio.io/v1alpha3",
+  "kind": "DestinationRule",
+  "metadata": {
+    "name": "DESTINATIONNAME",
+    "namespace": "default"
+  },
+  "spec": {
+    "host": "NAMESERVICE",
+    "trafficPolicy": null,
+    "subsets": [
+      {
+        "name": "safe",
+        "labels": {
+          "version": "safe"
+        }
+      },
+      {
+        "name": "test",
+        "labels": {
+          "version": "test"
+        }
+      }
+    ]
+  }
+}

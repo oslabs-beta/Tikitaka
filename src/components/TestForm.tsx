@@ -132,7 +132,7 @@ const TestForm: React.FC<Iprops> = (props) => {
     
     return (
         <React.Fragment>
-            <iframe id="myFrame" width="100%" height="1000px" src="http://localhost:55917/kiali/console/overview?kiosk=true"></iframe>
+            <iframe id="myFrame" width="100%" height="1000px" src="http://localhost:49595/kiali/console/overview?kiosk=true"></iframe>
         <Form onSubmit={handleSubmit}>
             <Form.Row>
                 <Form.Group as={Col}>
@@ -197,9 +197,6 @@ const TestForm: React.FC<Iprops> = (props) => {
                 Create A/B Test
             </Button> */}
             <Button type="submit">Create A/B Testing</Button>
-            <Button variant="primary">
-                Open Kiali
-            </Button>
         </Form>
         </React.Fragment>
     );
