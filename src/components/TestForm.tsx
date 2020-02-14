@@ -1,13 +1,16 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext, createContext} from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import InputGroup from 'react-bootstrap/InputGroup'
+// import { requestContext } from '../context/tikitakaContext'
+import request = require('request');
+
 
 interface Iprops{};
 
-const TestForm: React.FC<Iprops> = () => {
+const TestForm: React.FC<Iprops> = (props) => {
     interface eachMetadataType {
         name: string;
         namespace: string;
@@ -16,18 +19,18 @@ const TestForm: React.FC<Iprops> = () => {
         resourceVersion: string;
         generation: number;
         creationTimestamp: string;
-    }
+    };
     interface eachItemType {
         metadata: eachMetadataType;
         spec: object;
         status: object;
-    }
+    };
     interface containersType {
         kind: string;
         apiVersion: string;
         metadata: object;
         items: eachItemType[];
-    }
+    };
     const [containers, setContainers] = useState<containersType>({
         kind: '',
         apiVersion: '',
@@ -47,21 +50,95 @@ const TestForm: React.FC<Iprops> = () => {
     };
     useEffect(() => {getContainers()}, []);
     const dropDown = [];
-    if (containers.items.length > 1) {
-        for(let i = 0; i < containers.items.length; i++) {
-            dropDown.push(<option key={`${i}`}>{containers.items[i].metadata.name}</option>);
-        }
-    } else {
+    // if (containers.items.length > 0) {
+    //     for(let i = 0; i < containers.items.length; i++) {
+    //         dropDown.push(<option key={`${i}`}>{containers.items[i].metadata.name}</option>);
+    //     }
+    // } else {
         dropDown.push(<option key='ryan'>tikitaka-ryan-image</option>);
-    }
+        dropDown.push(<option key='arman'>tikitaka-arman-image</option>);
+        dropDown.push(<option key='cat'>tikitaka-cat-image</option>);
+    // }
+
+
+    /////////////
+    // button //
+    ////////////
+    interface arrayType {
+        nameA: string;
+        weightA: number;
+        nameB: string;
+        addressB: string;
+        versionB: string;
+    };
+
+    const [imageA, setImageA] = useState<string>('');
+    const dropdownHandler = (e:any) =>{
+        setImageA(e.target.value);
+        console.log(e.target.value)
+    };
+
+    const [weightA, setWeightA] = useState<number>(0);
+    const weightAHandler = (e:any) => {
+        setWeightA(e.target.value);
+        console.log(weightA);
+    };
+
+    const [imageB, setImageB] = useState<string>('');
+    const imageHandler = (e:any) => {
+        setImageB(e.target.value);
+        console.log(imageB);
+    };
+
+    const [addressB, setAddressB] = useState<string>('');
+    const addressHandler = (e:any) => {
+        setAddressB(e.target.value);
+        console.log(addressB);
+    };
+
+    const [versionB, setVersionB] = useState<string>('');
+    const versionHandler = (e:any) => {
+        setVersionB(e.target.value);
+        console.log(versionB)
+    };
+
+
+    interface ITheme {
+        Aimage: string,
+        Aweight: number,
+        Bimage: string,
+        Baddress: string,
+        Bversion: string,
+    };
+
+    // The standard way to create context. It takes an initial value object
+    const ThemeContext = createContext<ITheme>({
+        Aimage: imageA,
+        Aweight: weightA,
+        Bimage: imageB,
+        Baddress: addressB,
+        Bversion: versionB,
+    });
+
+    // Accessing context in a child component
+    const themeContext = useContext<ITheme>(ThemeContext);
+
+    const handleSubmit = (e:any) => {
+        e.preventDefault();
+        console.log('successfully bound handleSubmit to the button');
+        // console.log('request context', requestContext);
+        console.log(themeContext)
+    };
+
     return (
         <React.Fragment>
             <iframe id="myFrame" width="100%" height="1000px" src="http://localhost:55917/kiali/console/overview?kiosk=true"></iframe>
-        <Form>
+        <Form onSubmit={handleSubmit}>
             <Form.Row>
                 <Form.Group as={Col}>
                     <Form.Label><h4>Docker Image A:</h4></Form.Label>
-                    <Form.Control as="select">
+                    <Form.Control as="select" onChange={(e) => {dropdownHandler(e)}}>
+                        <option key={-1}>Choose image name...</option>
                         {dropDown}
                     </Form.Control>
                     <br />
@@ -69,6 +146,7 @@ const TestForm: React.FC<Iprops> = () => {
                         <Form.Control
                         placeholder="Canary weight (integer between 0-100)"
                         aria-label="Amount (to the nearest number)"
+                        onChange={weightAHandler}
                         />
                         <InputGroup.Append>
                         <InputGroup.Text>%</InputGroup.Text>
@@ -85,6 +163,7 @@ const TestForm: React.FC<Iprops> = () => {
                         <Form.Control
                         aria-label="Default"
                         aria-describedby="inputGroup-sizing-default"
+                        onChange={imageHandler}
                         />
                     </InputGroup>
                     <br />
@@ -96,6 +175,7 @@ const TestForm: React.FC<Iprops> = () => {
                         placeholder="Ex: 77af4d6b9913"
                         aria-label="Default"
                         aria-describedby="inputGroup-sizing-default"
+                        onChange={addressHandler}
                         />
                     </InputGroup>
                     <br />
@@ -107,16 +187,21 @@ const TestForm: React.FC<Iprops> = () => {
                         placeholder="1.0.0"
                         aria-label="Default"
                         aria-describedby="inputGroup-sizing-default"
+                        onChange={versionHandler}
                         />
                     </InputGroup>
                     <br />
                 </Form.Group>
             </Form.Row>
-            <Button variant="primary" type="submit" id="createTestBtn">
+            {/* <Button variant="primary" type="submit" id="createTestBtn">
                 Create A/B Test
+            </Button> */}
+            <Button type="submit">Create A/B Testing</Button>
+            <Button variant="primary">
+                Open Kiali
             </Button>
         </Form>
         </React.Fragment>
     );
-}
+};
 export default TestForm;
