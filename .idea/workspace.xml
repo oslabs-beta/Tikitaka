@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e18c754-5a80-463e-8a5a-cd69604aa84c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ca.crt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/k8sTests/api-access-role-bindling.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/k8sTests/tikitaka-auth.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/controllers/createDepController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/token" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DigiCertAssuredIDCAG2.crt.pem" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/testController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/testController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/skaffold" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/skaffold.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/skaffold.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TestForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TestForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/tikitaka-app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/tikitaka-app.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/createDepController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/createDepController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +34,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.17.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -60,9 +50,9 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/k8sTests" />
       <recent name="$PROJECT_DIR$/k8s" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager" selected="npm.dev">
@@ -106,7 +96,7 @@
       <workItem from="1581361962420" duration="52744000" />
       <workItem from="1581526532155" duration="8976000" />
       <workItem from="1581569522668" duration="13548000" />
-      <workItem from="1581587265720" duration="9641000" />
+      <workItem from="1581587265720" duration="19794000" />
     </task>
     <task id="LOCAL-00001" summary="The Dockerfile is corrected">
       <created>1581364681837</created>
@@ -262,13 +252,13 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="721" y="446" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080/1920.500.1680.1050@0.0.1920.1080" timestamp="1581374465174" />
-    <state width="500" height="60" key="javadoc.popup.new" timestamp="1581630095935">
+    <state width="500" height="60" key="javadoc.popup.new" timestamp="1581645403922">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="375" height="45" key="javadoc.popup.new/0.0.1680.1050/-2560.-1023.2560.1440@-2560.-1023.2560.1440" timestamp="1581474194119" />
     <state width="375" height="45" key="javadoc.popup.new/0.0.1920.1080/1920.500.1680.1050@0.0.1920.1080" timestamp="1581492010691" />
     <state width="500" height="60" key="javadoc.popup.new/0.0.2560.1440@0.0.2560.1440" timestamp="1581554891593" />
-    <state width="500" height="60" key="javadoc.popup.new/0.23.2560.1417@0.23.2560.1417" timestamp="1581630095935" />
+    <state width="500" height="60" key="javadoc.popup.new/0.23.2560.1417@0.23.2560.1417" timestamp="1581645403922" />
     <state x="887" y="402" width="838" height="1032" key="search.everywhere.popup" timestamp="1581573248957">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>

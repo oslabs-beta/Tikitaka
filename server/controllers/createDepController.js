@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const fs = require('fs');
 const shell = require('shelljs');
 const cert = 'MIICyDCCAbCgAwIBAgIBADANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwprdWJl\n' +
     'cm5ldGVzMB4XDTIwMDEyNDA2MjgyOFoXDTMwMDEyMTA2MjgyOFowFTETMBEGA1UE\n' +
@@ -15,7 +16,7 @@ const cert = 'MIICyDCCAbCgAwIBAgIBADANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwprdWJl\n
     'dlwOO2ydFNNNVwNhLQdYC1cZHT03NuWCGHXr8xVz1toEeUSYRmsBPRhgj7JZ9VzN\n' +
     'HjOjxdbv/y+SnhcXgyxaaIUKLK+n/a62y//X9EzVeAr0HQsD7MpFzt/SAwXA/03U\n' +
     'szYyd3UnItjzrHVXVONpODv149Z8wfnytRbgv02N7sHGhLJ38Jh0r+Hd3zk=';
-const token = 'eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImRlZmF1bHQtdG9rZW4tbmM0djYiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGVmYXVsdCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjNlZTdmN2YyLTRkMDUtNGMwZi04NDUwLWM0ODE2YzEyMDdkMSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRlZmF1bHQifQ.FKgY9GcvPg_hs2dAPgSa1j983ZCaX_oaxNYCanPPu2BiyBx21V9BlsJZOdL_BUSedpFaCtaEtcnU8OQLzRy0_3oo6iDSauRU9hz-CRGFbiK4mWS9RRTFcjt88H8oQcZRXVsAwP8vylWJfA41_ADc1-R7Bgwef_dyiLaFRSyaYlyOQ6onl9fOXy346xrjrZY9AVSWtfkkg7GAjZDgSe1dQoaedfYTN-QyuvxXqWrx4NL0vokBSDOSePuI4GQpepmUzlEdi4BiuNrAqtL8gEVoEmYrCsw8RIxxPKIhE90I2aa7aGN42XD2YQ8vpzN7hvJPYuZR3rGJlAfhjWLVQozNXw#';
+const token = fs.readFileSync('/var/run/secrets/kubernetes.io/serviceaccount/token', 'utf8');
 const body = {
   "apiVersion": "networking.istio.io/v1alpha3",
   "kind": "VirtualService",
@@ -78,23 +79,20 @@ const body = {
 };
 
 const createDepController = {};
-
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 createDepController.addVirtualService = (req, res, next) => {
+  
   fetch('https://kubernetes.default.svc/apis/networking.istio.io/v1alpha3/namespaces/default/virtualservices/', {
     method: 'POST',
-    body: JSON.stringify(body),
+    body: b,
+    requestCert: false,
+    rejectUnauthorized: false,
     headers: { 'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     },
-    ca: cert
-  }).then((r) => {
-    console.log('I got to creating json');
-    return r.json();
+    ca: [fs.readFileSync('/var/run/secrets/kubernetes.io/serviceaccount/ca.crt', 'utf8'), fs.readFileSync('/usr/src/app/DigiCertAssuredIDCAG2.crt.pem', 'utf8') ],
   })
-  .then(json => {
-    console.log(json);
-    res.locals.data = json;
-  });
+  .then(r => r.json()).then(json => console.log(json)).catch(e => console.log(e));
   return next();
 };
 module.exports = createDepController;
