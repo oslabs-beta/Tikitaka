@@ -1,16 +1,15 @@
 import * as React from 'react';
-import { useState, useEffect, useContext, createContext} from 'react';
+import { useState, useEffect, useContext, createContext } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import InputGroup from 'react-bootstrap/InputGroup'
-// import { requestContext } from '../context/tikitakaContext'
-import request = require('request');
-
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup';
+import { HistoryContext } from '../context/historyContext';
 
 interface Iprops{};
 
 const TestForm: React.FC<Iprops> = (props) => {
+    const { history, setHistory } = useContext(HistoryContext);
     interface eachMetadataType {
         name: string;
         namespace: string;
@@ -50,16 +49,15 @@ const TestForm: React.FC<Iprops> = (props) => {
     };
     useEffect(() => {getContainers()}, []);
     const dropDown = [];
-    // if (containers.items.length > 0) {
-    //     for(let i = 0; i < containers.items.length; i++) {
-    //         dropDown.push(<option key={`${i}`}>{containers.items[i].metadata.name}</option>);
-    //     }
-    // } else {
+    if (containers.items.length > 0) {
+        for(let i = 0; i < containers.items.length; i++) {
+            dropDown.push(<option key={`${i}`}>{containers.items[i].metadata.name}</option>);
+        }
+    } else {
         dropDown.push(<option key='ryan'>tikitaka-ryan-image</option>);
         dropDown.push(<option key='arman'>tikitaka-arman-image</option>);
         dropDown.push(<option key='cat'>tikitaka-cat-image</option>);
-    // }
-
+    }
 
     /////////////
     // button //
@@ -77,7 +75,6 @@ const TestForm: React.FC<Iprops> = (props) => {
         setImageA(e.target.value);
         console.log(e.target.value)
     };
-
     const [weightA, setWeightA] = useState<number>(0);
     const weightAHandler = (e:any) => {
         setWeightA(e.target.value);
@@ -127,9 +124,12 @@ const TestForm: React.FC<Iprops> = (props) => {
         e.preventDefault();
         console.log('successfully bound handleSubmit to the button');
         // console.log('request context', requestContext);
-        console.log(themeContext)
-    };
-
+        // const req = useContext(requestContext.imageA)
+        // console.log('req', req);
+        setHistory([...history, { imageA, weightA, imageB, addressB, versionB }]);
+    }
+    console.log('history now: ', history);
+    
     return (
         <React.Fragment>
             <iframe id="myFrame" width="100%" height="1000px" src="http://localhost:55917/kiali/console/overview?kiosk=true"></iframe>
