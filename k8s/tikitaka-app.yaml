@@ -31,7 +31,7 @@ spec:
       serviceAccountName: api-service-account
       containers:
         - name: tikitaka
-          image: tikitaka1/tikitaka-stage:latest
+          image: tikitaka1/tikitaka-stage
           ports:
             - containerPort: 3000
           imagePullPolicy: Always
