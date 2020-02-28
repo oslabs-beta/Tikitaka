@@ -38,7 +38,7 @@ export default class TestForm extends React.Component<Iprops, any>{
 
         <div className="col-sm-6 col-md-4">
           <div className="thumbnail">
-            <img src="https://data.whicdn.com/images/308901666/original.jpg" alt="..."/>
+            <img src="https://www.pngitem.com/pimgs/m/509-5090874_animegirl-anime-girl-cute-kawaii-dog-catgirl-cute.png" alt="..."/>
           </div>
           <div className="caption">
             <h3>Pati Honores</h3>
