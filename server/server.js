@@ -1,9 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const cors = require('cors');
 const testController = require('./controllers/testController');
-
+const createDepController = require('./controllers/createDepController');
 // const mongoose = require('mongoose');
 // const { History } = require('./models/historyModels');
 // const db = require('./config/keys').MONGO_URI;
@@ -22,23 +21,17 @@ const app = express();
 const PORT = process.env.PORT || '3000';
 
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../build/')));
-app.use(cors());
-app.use(cors({credentials:true, origin:'http://localhost:3000'}))
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*"); // localhost 8080
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
 
-app.get('/data',testController.getData, (req,res) => {
-  // res.json(res.locals.data);
-  res.send('data')
-});
-app.get('/testing-ab',testController.testingAB, (req,res) => {
-  // res.json(res.locals.data);
-  res.send('testing-ab')
+// app.get('/getDeploys',testController.setup, (req,res) => {
+//   res.json(res.locals.data);
+// });
+// app.get('/testing-ab',testController.testingAB, (req,res) => {
+//   res.json(res.locals.data);
+// });
+app.all('/dothis', createDepController.addVirtualService, (req, res) => {
+  return res.json('do it please please');
 });
 
 // app.get('/history', (req, res) => {
@@ -75,12 +68,12 @@ app.use('*',(req,res) => {
 app.use((err, req, res, next) => {
   // console.error(err.stack);
   // Creating our default error
-  const defaulErr = { 
+  const defaulErr = {
     log: 'Express error handler caught unknown middleware error',
     status: 400,
     message: { err: 'An error ocurred'},
   };
-  const errorObj = Object.assign(defaulErr, err); 
+  const errorObj = Object.assign(defaulErr, err);
   console.log(errorObj.log);
   res.status(errorObj.status).json(errorObj.message);
 });
@@ -88,4 +81,3 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
     console.log(`Server listening on port: ${PORT}`);
   });
-  

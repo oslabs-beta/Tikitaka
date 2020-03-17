@@ -126,10 +126,11 @@ const TestForm: React.FC<Iprops> = (props) => {
         // console.log('request context', requestContext);
         // const req = useContext(requestContext.imageA)
         // console.log('req', req);
+        fetch('/dothis').then(data => data.json()).then(json => console.log(json)).catch(e => console.log(e));
         setHistory([...history, { imageA, weightA, imageB, addressB, versionB }]);
-    }
+    };
     console.log('history now: ', history);
-    
+
     return (
         <React.Fragment>
             <iframe id="myFrame" width="100%" height="1000px" src="http://localhost:49595/kiali/console/overview?kiosk=true"></iframe>
